@@ -16,7 +16,7 @@ This repo will be the home to both the Glass and Pebble apps for the Wearable De
         },
         {
             "title": "Pebble Development Class",
-            "speaker": "Sean McManis",
+            "speaker": "Sean McMains",
             "time": "1393358543084",
             "type": "tutorial",
             "level": "intermediate"
