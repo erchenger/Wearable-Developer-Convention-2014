@@ -45,5 +45,5 @@ This repo will be the home to both the Glass and Pebble apps for the Wearable De
 ```
 
 ##Developed By
-Elliott Chenger
-Sean McMains
+- Elliott Chenger
+- Sean McMains
