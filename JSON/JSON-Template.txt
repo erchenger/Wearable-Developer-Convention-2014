@@ -1,6 +1,5 @@
 {
-    "type": "class_data",
-    "classes": [
+    "events": [
         {
             "title": "Glass Development Class",
             "speaker": "Elliott Chenger",
@@ -10,7 +9,7 @@
         },
         {
             "title": "Pebble Development Class",
-            "speaker": "Sean McManis",
+            "speaker": "Sean McMains",
             "time": "1393358543084",
             "type": "tutorial",
             "level": "intermediate"
