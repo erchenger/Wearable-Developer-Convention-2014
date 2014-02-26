@@ -9,7 +9,6 @@ import android.app.Activity;
 import android.os.Bundle;
 
 import com.elliott.chenger.wearabledeveloperconference2014.adapter.ImpCardScrollAdapter;
-import com.elliott.chenger.wearabledeveloperconference2014.model.Event;
 import com.elliott.chenger.wearabledeveloperconference2014.model.EventTime;
 import com.elliott.chenger.wearabledeveloperconference2014.model.TimesByDate;
 import com.elliott.chenger.wearabledeveloperconference2014.utils.DateConstants;
@@ -23,6 +22,8 @@ import com.google.gson.Gson;
  *
  */
 public class TimeActivity extends Activity{
+	public static final String START_TIME = "starttime";
+	public static final String END_TIME = "endtime";
 	private List<Card> mCards;
 	private CardScrollView mCardScrollView;
 	private ImpCardScrollAdapter mCardScrollAdapter;

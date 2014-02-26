@@ -5,6 +5,7 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
 
-   	<string name="glass_voice_trigger">get conference schedule</string>
+   	<string name="glass_voice_trigger">get schedule</string>
+   	<string name="glass_voice_prompt">What date and time would you like?</string>
    	<string name="date">Date</string>
 </resources>
