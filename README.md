@@ -4,7 +4,7 @@ Wearable Developer Convention 2014
 This repo will be the home to both the Glass and Pebble apps for the Wearable Developer Convention to help attendees view the schedule on their favorite wearable device. 
 #JSON Formatting
 ##Time
-This is the format for the Time JSON, which we use to tell what times on a certain day the time slots for events occur.
+This is the format for the Time JSON, which we use to tell what time slots occur on a certain day for the events.
 ```json
 {
     "date": "1393999200000",
