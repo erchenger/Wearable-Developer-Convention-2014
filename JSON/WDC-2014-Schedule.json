@@ -3,140 +3,160 @@
     {
       "title" : "An Overview of Computer Vision and how it can Enable Perceptive Wearables",
       "speaker" : "Goksel Dedeoglu",
-      "time" : 1393943400000,
+      "startTime" : 1393943400000,
+      "endTime" : 1393947000000,
       "type" : "class",
       "level" : "overview"
     },
     {
       "title" : "API and GDK Design for Google Glass",
       "speaker" : "Cecilia Abadie",
-      "time" : 1393943400000,
+      "startTime" : 1393943400000,
+      "endTime" : 1393947000000,
       "type" : "class",
       "level" : "overview"
     },
     {
       "title" : "Creating Products for Google Glass at the Highest Level",
       "speaker" : "Mike DiGiovanni",
-      "time" : 1393943400000,
+      "startTime" : 1393943400000,
+      "endTime" : 1393947000000,
       "type" : "class",
       "level" : "overview"
     },
     {
       "title" : "NDK Primer",
       "speaker" : "Ron Munitz",
-      "time" : 1393943400000,
+      "startTime" : 1393943400000,
+      "endTime" : 1393947000000,
       "type" : "class",
       "level" : "overview"
     },
     {
       "title" : "The Glass Platform: How We Got Here",
       "speaker" : "Jenny Murphy",
-      "time" : 1393947900000,
+      "startTime" : 1393947900000,
+      "endTime" : 1393951500000,
       "type" : "keynote",
       "level" : "overview"
     },
     {
       "title" : "Developers in the Doctor’s Office: How Wearables are Changing the way we give and Receive Care",
       "speaker" : "Andrei Pop",
-      "time" : 1393952400000,
+      "startTime" : 1393952400000,
+      "endTime" : 1393956000000,
       "type" : "class",
       "level" : "overview"
     },
     {
       "title" : "Glassware UI Design",
       "speaker" : "Matt Abdou",
-      "time" : 1393952400000,
+      "startTime" : 1393952400000,
+      "endTime" : 1393956000000,
       "type" : "class",
       "level" : "overview"
     },
     {
       "title" : "Security Challenges in Wearables",
       "speaker" : "Ray Potter",
-      "time" : 1393952400000,
+      "startTime" : 1393952400000,
+      "endTime" : 1393956000000,
       "type" : "class",
       "level" : "overview"
     },
     {
       "title" : "Using WearScript for Powerful Rapid Prototyping on Google Glass",
       "speaker" : "Brandyn White",
-      "time" : 1393952400000,
+      "startTime" : 1393952400000,
+      "endTime" : 1393956000000,
       "type" : "class",
       "level" : "intermediate"
     },
     {
       "title" : "Ensuring Your Wearable Apps Delight Users and Beat the Competition",
       "speaker" : "John Montgomery",
-      "time" : 1393956900000,
+      "startTime" : 1393956900000,
+      "endTime" : 1393958700000,
       "type" : "class",
       "level" : "overview"
     },
     {
       "title" : "Sony SmartWatch 2: Get a Headstart on Wearable Apps Development",
       "speaker" : "Anupam Nath",
-      "time" : 1393956900000,
+      "startTime" : 1393956900000,
+      "endTime" : 1393958700000,
       "type" : "class",
       "level" : "overview"
     },
     {
       "title" : "APIs and Hardware: The Current Tradeoff",
       "speaker" : "Fabrizio Filippini",
-      "time" : 1393962300000,
+      "startTime" : 1393962300000,
+      "endTime" : 1393965900000,
       "type" : "class",
       "level" : "intermediate"
     },
     {
       "title" : "Hybrid Glassware",
       "speaker" : "Jenny Murphy",
-      "time" : 1393962300000,
+      "startTime" : 1393962300000,
+      "endTime" : 1393965900000,
       "type" : "class",
       "level" : "advanced"
     },
     {
       "title" : "Publishing Your Google Glass App",
       "speaker" : "Matt Abdou",
-      "time" : 1393962300000,
+      "startTime" : 1393962300000,
+      "endTime" : 1393965900000,
       "type" : "class",
       "level" : "overview"
     },
     {
       "title" : "Wearable Springboard: High Performance, Low Power Motion Technology",
       "speaker" : "David B. Karlin",
-      "time" : 1393962300000,
+      "startTime" : 1393962300000,
+      "endTime" : 1393965900000,
       "type" : "class",
       "level" : "intermediate"
     },
     {
       "title" : "Beyond Activity Trackers: Sport Wearables Design",
       "speaker" : "Jen Costillo",
-      "time" : 1393967700000,
+      "startTime" : 1393967700000,
+      "endTime" : 1393971300000,
       "type" : "class",
       "level" : "advanced"
     },
     {
       "title" : "Deep Dive into Google Glass Live Cards",
       "speaker" : "Luis de la Rosa",
-      "time" : 1393967700000,
+      "startTime" : 1393967700000,
+      "endTime" : 1393971300000,
       "type" : "class",
       "level" : "advanced"
     },
     {
       "title" : "Social Smarts for Small Screens",
       "speaker" : "Sonia Koesterer",
-      "time" : 1393967700000,
+      "startTime" : 1393967700000,
+      "endTime" : 1393971300000,
       "type" : "class",
       "level" : "overview"
     },
     {
       "title" : "When Microwatts Are Precious: Battery Tips for Wearable Apps",
       "speaker" : "Mark Murphy",
-      "time" : 1393967700000,
+      "startTime" : 1393967700000,
+      "endTime" : 1393971300000,
       "type" : "class",
       "level" : "overview"
     },
     {
       "title" : "Vision: Wear them, Forget them. What that means for the Underlying Breakthrough Technology",
       "speaker" : "Philippe Kahn",
-      "time" : 1393972200000,
+      "startTime" : 1393972200000,
+      "endTime" : 1393975800000,
       "type" : "keynote",
       "level" : "overview"
     }
