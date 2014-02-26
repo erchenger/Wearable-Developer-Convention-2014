@@ -159,6 +159,94 @@
       "endTime" : 1393975800000,
       "type" : "keynote",
       "level" : "overview"
+    },
+    {
+      "title" : "Developing for Wearable Devices with Android",
+      "speaker" : "Dario Laverde",
+      "startTime" : 1394029800000,
+      "endTime" : 1394037000000,
+      "type" : "tutorial",
+      "level" : "intermediate"
+    },
+    {
+      "title" : "Filming and Broadcasting with Google Glass",
+      "speaker" : "Jeris JC Miller",
+      "startTime" : 1394029800000,
+      "endTime" : 1394037000000,
+      "type" : "tutorial",
+      "level" : "overview"
+    },
+    {
+      "title" : "Headless Android",
+      "speaker" : "Ron Munitz",
+      "startTime" : 1394029800000,
+      "endTime" : 1394037000000,
+      "type" : "tutorial",
+      "level" : "intermediate"
+    },
+    {
+      "title" : "How to Develop Your Wearable Electronics from Idea to Production",
+      "speaker" : "Fabrizio Filippini",
+      "startTime" : 1394029800000,
+      "endTime" : 1394037000000,
+      "type" : "tutorial",
+      "level" : "intermediate"
+    },
+    {
+      "title" : "Introduction to Wearable Development with Pebble",
+      "speaker" : "Thomas Sarlandie",
+      "startTime" : 1394037900000,
+      "endTime" : 1394045100000,
+      "type" : "tutorial",
+      "level" : "advanced"
+    },
+    {
+      "title" : "Prototyping New Wearable Experiences with Soft Electronics and Arduinos",
+      "speaker" : "Pearl Chen",
+      "startTime" : 1394037900000,
+      "endTime" : 1394045100000,
+      "type" : "tutorial",
+      "level" : "intermediate"
+    },
+    {
+      "title" : "Transitioning from Android to Google Glass",
+      "speaker" : "Luis de la Rosa",
+      "startTime" : 1394037900000,
+      "endTime" : 1394045100000,
+      "type" : "tutorial",
+      "level" : "advanced"
+    },
+    {
+      "title" : "Building Wearable Technology Applications for Behavior Modification: A Hands-On Tutorial",
+      "speaker" : "Ashley Beattie",
+      "startTime" : 1394047800000,
+      "endTime" : 1394055000000,
+      "type" : "tutorial",
+      "level" : "advanced"
+    },
+    {
+      "title" : "Hardware Glassware: Building Bluetooth-Enabled Accessories for Glass",
+      "speaker" : "Zack Freedman",
+      "startTime" : 1394047800000,
+      "endTime" : 1394055000000,
+      "type" : "tutorial",
+      "level" : "advanced"
+    },
+    {
+      "title" : "ROM Cooking: A Hands-on, \"Do it at Home\" Approach",
+      "speaker" : "Ron Munitz",
+      "startTime" : 1394047800000,
+      "endTime" : 1394055000000,
+      "type" : "tutorial",
+      "level" : "intermediate"
+    },
+    {
+      "title" : "Wearable Hacking with Raspberry Pi, Google Glass, Motors and Camera",
+      "speaker" : "Mark Scheel",
+      "startTime" : 1394047800000,
+      "endTime" : 1394055000000,
+      "type" : "tutorial",
+      "level" : "overview"
     }
   ]
 }
