@@ -1,60 +1,75 @@
 #include <pebble.h>
 
-static Window *window;
-static TextLayer *text_layer;
+static Window *day_window;
+static MenuLayer *day_menu_layer;
 
-static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
-  text_layer_set_text(text_layer, "Select");
+
+// Day Window
+
+static int16_t day_get_cell_height_callback(struct MenuLayer *menu_layer, MenuIndex *cell_index, void *data) {
+  return 44;
 }
 
-static void up_click_handler(ClickRecognizerRef recognizer, void *context) {
-  text_layer_set_text(text_layer, "Up");
+static void day_draw_row_callback(GContext* ctx, Layer *cell_layer, MenuIndex *cell_index, void *data) {
+  const int index = cell_index->row;
+  switch (index) {
+      case 0:
+        menu_cell_basic_draw(ctx, cell_layer, "Wednesday", "March 7", NULL);
+        break;
+      case 1:
+        menu_cell_basic_draw(ctx, cell_layer, "Thursday", "March 8", NULL);
+        break;
+      case 2:
+        menu_cell_basic_draw(ctx, cell_layer, "Friday", "March 9", NULL);
+        break;
+      case 3:
+        menu_cell_basic_draw(ctx, cell_layer, "About", NULL, NULL);
+  }
 }
 
-static void down_click_handler(ClickRecognizerRef recognizer, void *context) {
-  text_layer_set_text(text_layer, "Down");
+static uint16_t day_get_num_rows_callback(struct MenuLayer *menu_layer, uint16_t section_index, void *data) {
+  return 4;
 }
 
-static void click_config_provider(void *context) {
-  window_single_click_subscribe(BUTTON_ID_SELECT, select_click_handler);
-  window_single_click_subscribe(BUTTON_ID_UP, up_click_handler);
-  window_single_click_subscribe(BUTTON_ID_DOWN, down_click_handler);
-}
-
-static void window_load(Window *window) {
+static void day_window_load(Window *window) {
   Layer *window_layer = window_get_root_layer(window);
   GRect bounds = layer_get_bounds(window_layer);
 
-  text_layer = text_layer_create((GRect) { .origin = { 0, 72 }, .size = { bounds.size.w, 20 } });
-  text_layer_set_text(text_layer, "Press a button");
-  text_layer_set_text_alignment(text_layer, GTextAlignmentCenter);
-  layer_add_child(window_layer, text_layer_get_layer(text_layer));
+  GRect window_frame = layer_get_frame(window_layer);
+  day_menu_layer = menu_layer_create(window_frame);
+  menu_layer_set_callbacks(day_menu_layer, NULL, (MenuLayerCallbacks) {
+    .get_cell_height = (MenuLayerGetCellHeightCallback) day_get_cell_height_callback,
+    .draw_row = (MenuLayerDrawRowCallback) day_draw_row_callback,
+    .get_num_rows = (MenuLayerGetNumberOfRowsInSectionsCallback) day_get_num_rows_callback,
+    //.select_click = (MenuLayerSelectCallback) day_select_callback,
+    //.select_long_click = (MenuLayerSelectCallback) day_select_long_callback
+  });
+  menu_layer_set_click_config_onto_window(day_menu_layer, window);
+  layer_add_child(window_layer, menu_layer_get_layer(day_menu_layer));
 }
 
-static void window_unload(Window *window) {
-  text_layer_destroy(text_layer);
+static void day_window_unload(Window *window) {
+  menu_layer_destroy(day_menu_layer);
 }
+
+
+
 
 static void init(void) {
-  window = window_create();
-  window_set_click_config_provider(window, click_config_provider);
-  window_set_window_handlers(window, (WindowHandlers) {
-    .load = window_load,
-    .unload = window_unload,
+  day_window = window_create();
+  window_set_window_handlers(day_window, (WindowHandlers) {
+    .load = day_window_load,
+    .unload = day_window_unload,
   });
-  const bool animated = true;
-  window_stack_push(window, animated);
+  window_stack_push(day_window, true);
 }
 
 static void deinit(void) {
-  window_destroy(window);
+  window_destroy(day_window);
 }
 
 int main(void) {
   init();
-
-  APP_LOG(APP_LOG_LEVEL_DEBUG, "Done initializing, pushed window: %p", window);
-
   app_event_loop();
   deinit();
 }
