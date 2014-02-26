@@ -1,0 +1,17 @@
+{
+  "uuid": "f6df1479-bfc2-49a8-a19e-bf88679e496c",
+  "shortName": "Pebble-WDC-2014",
+  "longName": "Pebble-WDC-2014",
+  "companyName": "MakeAwesomeHappen",
+  "versionCode": 1,
+  "versionLabel": "1.0.0",
+  "watchapp": {
+    "watchface": false
+  },
+  "appKeys": {
+    "dummy": 0
+  },
+  "resources": {
+    "media": []
+  }
+}
