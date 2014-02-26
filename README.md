@@ -6,38 +6,44 @@ This repo will be the home to both the Glass and Pebble apps for the Wearable De
 ##Event JSON Format
 ```json
 {
+    "date":"1393999200000",
     "events": [
         {
             "title": "Glass Development Class",
             "speaker": "Elliott Chenger",
-            "time": "1393358543084",
+            "startTime": "1393358543084",
+            "endTime": "1393358543084",
             "type": "class",
             "level": "overview"
         },
         {
             "title": "Pebble Development Class",
             "speaker": "Sean McMains",
-            "time": "1393358543084",
+            "startTime": "1393358543084",
+            "endTime": "1393358543084",
             "type": "tutorial",
             "level": "intermediate"
         },
         {
             "title": "Other Development Class",
             "speaker": "Bugs Bunny",
-            "time": "1393358543084",
+            "startTime": "1393358543084",
+            "endTime": "1393358543084",
             "type": "class",
             "level": "Advanced"
         },
         {
             "title": "Keynote",
             "speaker": "Daffy Duck",
-            "time": "1393358543084",
+            "startTime": "1393358543084",
+            "endTime": "1393358543084",
             "type": "keynote"
         },
         {
             "title": "Fireside Chat",
             "speaker": "Red Ranger",
-            "time": "1393358543084",
+            "startTime": "1393358543084",
+            "endTime": "1393358543084",
             "type": "special"
         }
     ]
