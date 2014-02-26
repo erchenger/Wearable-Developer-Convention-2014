@@ -6,7 +6,7 @@ This repo will be the home to both the Glass and Pebble apps for the Wearable De
 ##Event JSON Format
 ```json
 {
-    "date":"03-06-14",
+    "date":"1393999200000",
     "events": [
         {
             "title": "Glass Development Class",
