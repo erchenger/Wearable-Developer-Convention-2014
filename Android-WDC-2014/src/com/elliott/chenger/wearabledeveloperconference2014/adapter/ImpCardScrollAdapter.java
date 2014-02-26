@@ -8,10 +8,10 @@ import android.view.ViewGroup;
 import com.google.android.glass.app.Card;
 import com.google.android.glass.widget.CardScrollAdapter;
 
-public class DateScrollAdapter extends CardScrollAdapter{
+public class ImpCardScrollAdapter extends CardScrollAdapter{
 	private List<Card> mCards;
 	
-	public DateScrollAdapter(List<Card> cards){
+	public ImpCardScrollAdapter(List<Card> cards){
 		mCards = cards;
 	}
 	
