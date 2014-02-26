@@ -3,160 +3,160 @@
     {
       "title" : "An Overview of Computer Vision and how it can Enable Perceptive Wearables",
       "speaker" : "Goksel Dedeoglu",
-      "startTime" : 1393943400000,
-      "endTime" : 1393947000000,
+      "startTime" : 1394116200000,
+      "endTime" : 1394119800000,
       "type" : "class",
       "level" : "overview"
     },
     {
       "title" : "API and GDK Design for Google Glass",
       "speaker" : "Cecilia Abadie",
-      "startTime" : 1393943400000,
-      "endTime" : 1393947000000,
+      "startTime" : 1394116200000,
+      "endTime" : 1394119800000,
       "type" : "class",
       "level" : "overview"
     },
     {
       "title" : "Creating Products for Google Glass at the Highest Level",
       "speaker" : "Mike DiGiovanni",
-      "startTime" : 1393943400000,
-      "endTime" : 1393947000000,
+      "startTime" : 1394116200000,
+      "endTime" : 1394119800000,
       "type" : "class",
       "level" : "overview"
     },
     {
       "title" : "NDK Primer",
       "speaker" : "Ron Munitz",
-      "startTime" : 1393943400000,
-      "endTime" : 1393947000000,
+      "startTime" : 1394116200000,
+      "endTime" : 1394119800000,
       "type" : "class",
       "level" : "overview"
     },
     {
       "title" : "The Glass Platform: How We Got Here",
       "speaker" : "Jenny Murphy",
-      "startTime" : 1393947900000,
-      "endTime" : 1393951500000,
+      "startTime" : 1394120700000,
+      "endTime" : 1394124300000,
       "type" : "keynote",
       "level" : "overview"
     },
     {
       "title" : "Developers in the Doctor’s Office: How Wearables are Changing the way we give and Receive Care",
       "speaker" : "Andrei Pop",
-      "startTime" : 1393952400000,
-      "endTime" : 1393956000000,
+      "startTime" : 1394125200000,
+      "endTime" : 1394128800000,
       "type" : "class",
       "level" : "overview"
     },
     {
       "title" : "Glassware UI Design",
       "speaker" : "Matt Abdou",
-      "startTime" : 1393952400000,
-      "endTime" : 1393956000000,
+      "startTime" : 1394125200000,
+      "endTime" : 1394128800000,
       "type" : "class",
       "level" : "overview"
     },
     {
       "title" : "Security Challenges in Wearables",
       "speaker" : "Ray Potter",
-      "startTime" : 1393952400000,
-      "endTime" : 1393956000000,
+      "startTime" : 1394125200000,
+      "endTime" : 1394128800000,
       "type" : "class",
       "level" : "overview"
     },
     {
       "title" : "Using WearScript for Powerful Rapid Prototyping on Google Glass",
       "speaker" : "Brandyn White",
-      "startTime" : 1393952400000,
-      "endTime" : 1393956000000,
+      "startTime" : 1394125200000,
+      "endTime" : 1394128800000,
       "type" : "class",
       "level" : "intermediate"
     },
     {
       "title" : "Ensuring Your Wearable Apps Delight Users and Beat the Competition",
       "speaker" : "John Montgomery",
-      "startTime" : 1393956900000,
-      "endTime" : 1393958700000,
+      "startTime" : 1394129700000,
+      "endTime" : 1394131500000,
       "type" : "class",
       "level" : "overview"
     },
     {
       "title" : "Sony SmartWatch 2: Get a Headstart on Wearable Apps Development",
       "speaker" : "Anupam Nath",
-      "startTime" : 1393956900000,
-      "endTime" : 1393958700000,
+      "startTime" : 1394129700000,
+      "endTime" : 1394131500000,
       "type" : "class",
       "level" : "overview"
     },
     {
       "title" : "APIs and Hardware: The Current Tradeoff",
       "speaker" : "Fabrizio Filippini",
-      "startTime" : 1393962300000,
-      "endTime" : 1393965900000,
+      "startTime" : 1394135100000,
+      "endTime" : 1394138700000,
       "type" : "class",
       "level" : "intermediate"
     },
     {
       "title" : "Hybrid Glassware",
       "speaker" : "Jenny Murphy",
-      "startTime" : 1393962300000,
-      "endTime" : 1393965900000,
+      "startTime" : 1394135100000,
+      "endTime" : 1394138700000,
       "type" : "class",
       "level" : "advanced"
     },
     {
       "title" : "Publishing Your Google Glass App",
       "speaker" : "Matt Abdou",
-      "startTime" : 1393962300000,
-      "endTime" : 1393965900000,
+      "startTime" : 1394135100000,
+      "endTime" : 1394138700000,
       "type" : "class",
       "level" : "overview"
     },
     {
       "title" : "Wearable Springboard: High Performance, Low Power Motion Technology",
       "speaker" : "David B. Karlin",
-      "startTime" : 1393962300000,
-      "endTime" : 1393965900000,
+      "startTime" : 1394135100000,
+      "endTime" : 1394138700000,
       "type" : "class",
       "level" : "intermediate"
     },
     {
       "title" : "Beyond Activity Trackers: Sport Wearables Design",
       "speaker" : "Jen Costillo",
-      "startTime" : 1393967700000,
-      "endTime" : 1393971300000,
+      "startTime" : 1394140500000,
+      "endTime" : 1394144100000,
       "type" : "class",
       "level" : "advanced"
     },
     {
       "title" : "Deep Dive into Google Glass Live Cards",
       "speaker" : "Luis de la Rosa",
-      "startTime" : 1393967700000,
-      "endTime" : 1393971300000,
+      "startTime" : 1394140500000,
+      "endTime" : 1394144100000,
       "type" : "class",
       "level" : "advanced"
     },
     {
       "title" : "Social Smarts for Small Screens",
       "speaker" : "Sonia Koesterer",
-      "startTime" : 1393967700000,
-      "endTime" : 1393971300000,
+      "startTime" : 1394140500000,
+      "endTime" : 1394144100000,
       "type" : "class",
       "level" : "overview"
     },
     {
       "title" : "When Microwatts Are Precious: Battery Tips for Wearable Apps",
       "speaker" : "Mark Murphy",
-      "startTime" : 1393967700000,
-      "endTime" : 1393971300000,
+      "startTime" : 1394140500000,
+      "endTime" : 1394144100000,
       "type" : "class",
       "level" : "overview"
     },
     {
       "title" : "Vision: Wear them, Forget them. What that means for the Underlying Breakthrough Technology",
       "speaker" : "Philippe Kahn",
-      "startTime" : 1393972200000,
-      "endTime" : 1393975800000,
+      "startTime" : 1394145000000,
+      "endTime" : 1394148600000,
       "type" : "keynote",
       "level" : "overview"
     },
