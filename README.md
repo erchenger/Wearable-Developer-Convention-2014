@@ -7,15 +7,15 @@ This repo will be the home to both the Glass and Pebble apps for the Wearable De
 This is the format for the Time JSON, which we use to tell what time slots occur on a certain day for the events.
 ```json
 {
-    "date": "1393999200000",
+    "date": 1393999200000,
     "times": [
         {
-            "startTime": "1393358543084",
-            "endTime": "1393358543084"
+            "startTime": 1393358543084,
+            "endTime": 1393358543084
         },
         {
-            "startTime": "1393358543084",
-            "endTime": "1393358543084"
+            "startTime": 1393358543084,
+            "endTime": 1393358543084
         }
     ]
 }
@@ -24,44 +24,44 @@ This is the format for the Time JSON, which we use to tell what time slots occur
 This is the formate for the Event JSON, which we use to tell what events are happening on a certain day at a certain time.
 ```json
 {
-    "date":"1393999200000",
+    "date":1393999200000,
     "events": [
         {
             "title": "Glass Development Class",
             "speaker": "Elliott Chenger",
-            "startTime": "1393358543084",
-            "endTime": "1393358543084",
+            "startTime": 1393358543084,
+            "endTime": 1393358543084,
             "type": "class",
             "level": "overview"
         },
         {
             "title": "Pebble Development Class",
             "speaker": "Sean McMains",
-            "startTime": "1393358543084",
-            "endTime": "1393358543084",
+            "startTime": 1393358543084,
+            "endTime": 1393358543084,
             "type": "tutorial",
             "level": "intermediate"
         },
         {
             "title": "Other Development Class",
             "speaker": "Bugs Bunny",
-            "startTime": "1393358543084",
-            "endTime": "1393358543084",
+            "startTime": 1393358543084,
+            "endTime": 1393358543084,
             "type": "class",
             "level": "Advanced"
         },
         {
             "title": "Keynote",
             "speaker": "Daffy Duck",
-            "startTime": "1393358543084",
-            "endTime": "1393358543084",
+            "startTime": 1393358543084,
+            "endTime": 1393358543084,
             "type": "keynote"
         },
         {
             "title": "Fireside Chat",
             "speaker": "Red Ranger",
-            "startTime": "1393358543084",
-            "endTime": "1393358543084",
+            "startTime": 1393358543084,
+            "endTime": 1393358543084,
             "type": "special"
         }
     ]
