@@ -68,7 +68,7 @@ public class DateActivity extends Activity {
 	private void createCards(){
 		mCurrentDate = new Date(System.currentTimeMillis());
 		mCards = new ArrayList<Card>();
-		mCards.add(createCard("Select a date", "Speak your date or swipe"));
+		mCards.add(createCard("Select a date", "Swipe left or right"));
 		if(mCurrentDate.before(new Date(DateConstants.MAR_FIFTH)))
 			mCards.add(createCard("March 5th"));
 		if(mCurrentDate.before(new Date(DateConstants.MAR_SIXTH)))

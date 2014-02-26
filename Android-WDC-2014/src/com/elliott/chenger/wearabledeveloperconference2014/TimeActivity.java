@@ -60,7 +60,7 @@ public class TimeActivity extends Activity{
 
 	private void createCardsBasedOnDate() {
 		mCards = new ArrayList<Card>();
-		mCards.add(createCard("Select a time", "Speak your time or swipe"));
+		mCards.add(createCard("Select a time", "Swipe left or right"));
 		for(EventTime times:mEventTimes.eventTimes){
 			mCards.add(createCard(formatTimeToString(times.startTime,times.endTime)));
 		}
