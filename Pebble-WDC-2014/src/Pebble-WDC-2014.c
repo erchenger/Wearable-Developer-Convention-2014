@@ -9,6 +9,11 @@ static MenuLayer *day_menu_layer;
 static MenuLayer *time_slot_menu_layer;
 static MenuLayer *classes_menu_layer;
 
+static TextLayer *top_text_layer;
+static TextLayer *bottom_text_layer;
+
+static BitmapLayer *logo_layer;
+
 static int day_selected;
 static int time_slot_selected;
 
@@ -388,6 +393,7 @@ static void classes_window_load(Window *window) {
 
 static void classes_window_unload(Window *window) {
     time_slot_selected = -1;
+    menu_layer_destroy( classes_menu_layer );
 }
 
 
@@ -613,6 +619,7 @@ static void time_slot_window_load(Window *window) {
 
 static void time_slot_window_unload(Window *window) {
     day_selected = -1;
+    menu_layer_destroy( time_slot_menu_layer );
 }
 
 // About Window
@@ -621,16 +628,16 @@ static void time_slot_window_unload(Window *window) {
 static void about_window_load(Window *window) {
     Layer *window_layer = window_get_root_layer(window);
     
-    BitmapLayer *logo_layer = bitmap_layer_create( GRect( 0, 60, 144, 25 ) );
+    logo_layer = bitmap_layer_create( GRect( 0, 60, 144, 25 ) );
     bitmap_layer_set_bitmap( logo_layer, gbitmap_create_with_resource( RESOURCE_ID_MM_LOGO ) );
     layer_add_child( window_layer, bitmap_layer_get_layer( logo_layer ) );
     
-    TextLayer *top_text_layer = text_layer_create( GRect ( 10, 20, 144, 30 ) );
+    top_text_layer = text_layer_create( GRect ( 10, 20, 144, 30 ) );
     text_layer_set_font( top_text_layer, fonts_get_system_font( FONT_KEY_GOTHIC_14 ) );
     text_layer_set_text( top_text_layer, "Brought to you by the friendly folks at");
     layer_add_child( window_layer, text_layer_get_layer( top_text_layer ) );
     
-    TextLayer *bottom_text_layer = text_layer_create( GRect ( 10, 115, 144, 50 ) );
+    bottom_text_layer = text_layer_create( GRect ( 10, 115, 144, 50 ) );
     text_layer_set_font( bottom_text_layer, fonts_get_system_font( FONT_KEY_GOTHIC_14 ) );
     text_layer_set_text( bottom_text_layer, "Codez by Sean McMains sean@mcmains.net");
     layer_add_child( window_layer, text_layer_get_layer( bottom_text_layer ) );
@@ -638,7 +645,9 @@ static void about_window_load(Window *window) {
 }
 
 static void about_window_unload(Window *window) {
-    //menu_layer_destroy(day_menu_layer);
+    text_layer_destroy( top_text_layer );
+    text_layer_destroy( bottom_text_layer );
+    bitmap_layer_destroy( logo_layer );
 }
 
 
@@ -704,7 +713,6 @@ static void day_select_callback(MenuLayer *menu_layer, MenuIndex *cell_index, vo
 
 static void day_window_load(Window *window) {
     Layer *window_layer = window_get_root_layer(window);
-    GRect bounds = layer_get_bounds(window_layer);
     
     GRect window_frame = layer_get_frame(window_layer);
     day_menu_layer = menu_layer_create(window_frame);
@@ -719,7 +727,7 @@ static void day_window_load(Window *window) {
 }
 
 static void day_window_unload(Window *window) {
-    //menu_layer_destroy(day_menu_layer);
+    menu_layer_destroy(day_menu_layer);
 }
 
 
