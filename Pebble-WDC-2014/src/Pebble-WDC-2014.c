@@ -553,17 +553,40 @@ static uint16_t time_slot_get_num_rows_callback(struct MenuLayer *menu_layer, ui
     return 4;
 }
 
+static bool should_time_slot_advance() {
+    bool shouldAdvance = false;
+    
+    if ( ( day_selected == kWednesday ) && 
+        ( time_slot_selected == kWed830slot || time_slot_selected == kWed1045slot || time_slot_selected == kWed130slot ) ) {
+        shouldAdvance = true;
+    }
+    if ( ( day_selected == kThursday ) && 
+        ( time_slot_selected == kThu830slot || time_slot_selected == kThu1100slot || time_slot_selected == kThu1215slot || time_slot_selected == kThu145slot || time_slot_selected == kThu315slot ) ) {
+        shouldAdvance = true;
+    }
+    if ( ( day_selected == kFriday ) &&
+        ( time_slot_selected == kFri845slot || time_slot_selected == kFri1000slot || time_slot_selected == kFri1130slot || time_slot_selected == kFri145slot || time_slot_selected == kFri330slot ) ) {
+        shouldAdvance = true;
+    }
+    
+    return shouldAdvance;
+}
+
 static void time_slot_select_callback(MenuLayer *menu_layer, MenuIndex *cell_index, void *data) {
     APP_LOG(APP_LOG_LEVEL_DEBUG, "Time Slot Select");
     
     time_slot_selected = cell_index->row;
     
-    classes_window = window_create();
-    window_set_window_handlers(classes_window, (WindowHandlers) {
-        .load = classes_window_load,
-        .unload = classes_window_unload,
-    });
-    window_stack_push( classes_window, true );
+    
+    
+    if ( should_time_slot_advance() ) {
+        classes_window = window_create();
+        window_set_window_handlers(classes_window, (WindowHandlers) {
+            .load = classes_window_load,
+            .unload = classes_window_unload,
+        });
+        window_stack_push( classes_window, true );
+    }
 }
 
 
