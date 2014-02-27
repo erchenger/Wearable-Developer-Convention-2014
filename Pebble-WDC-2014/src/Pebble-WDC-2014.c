@@ -3,6 +3,7 @@
 static Window *day_window;
 static Window *time_slot_window;
 static Window *classes_window;
+static Window *about_window;
 
 static MenuLayer *day_menu_layer;
 static MenuLayer *time_slot_menu_layer;
@@ -30,6 +31,7 @@ static int time_slot_selected;
 #define kWednesday 0
 #define kThursday 1
 #define kFriday 2
+#define kAbout 3
 
 // Classes Window
 
@@ -370,7 +372,6 @@ static void classes_window_load(Window *window) {
     APP_LOG(APP_LOG_LEVEL_DEBUG, "classes_window_load start");
     
     Layer *window_layer = window_get_root_layer(window);
-    GRect bounds = layer_get_bounds(window_layer);
     
     GRect window_frame = layer_get_frame(window_layer);
     classes_menu_layer = menu_layer_create(window_frame);
@@ -595,7 +596,6 @@ static void time_slot_window_load(Window *window) {
     APP_LOG(APP_LOG_LEVEL_DEBUG, "time_slot_window_load start");
     
     Layer *window_layer = window_get_root_layer(window);
-    GRect bounds = layer_get_bounds(window_layer);
     
     GRect window_frame = layer_get_frame(window_layer);
     time_slot_menu_layer = menu_layer_create(window_frame);
@@ -613,6 +613,32 @@ static void time_slot_window_load(Window *window) {
 
 static void time_slot_window_unload(Window *window) {
     day_selected = -1;
+}
+
+// About Window
+
+
+static void about_window_load(Window *window) {
+    Layer *window_layer = window_get_root_layer(window);
+    
+    BitmapLayer *logo_layer = bitmap_layer_create( GRect( 0, 60, 144, 25 ) );
+    bitmap_layer_set_bitmap( logo_layer, gbitmap_create_with_resource( RESOURCE_ID_MM_LOGO ) );
+    layer_add_child( window_layer, bitmap_layer_get_layer( logo_layer ) );
+    
+    TextLayer *top_text_layer = text_layer_create( GRect ( 10, 20, 144, 30 ) );
+    text_layer_set_font( top_text_layer, fonts_get_system_font( FONT_KEY_GOTHIC_14 ) );
+    text_layer_set_text( top_text_layer, "Brought to you by the friendly folks at");
+    layer_add_child( window_layer, text_layer_get_layer( top_text_layer ) );
+    
+    TextLayer *bottom_text_layer = text_layer_create( GRect ( 10, 115, 144, 50 ) );
+    text_layer_set_font( bottom_text_layer, fonts_get_system_font( FONT_KEY_GOTHIC_14 ) );
+    text_layer_set_text( bottom_text_layer, "Codez by Sean McMains sean@mcmains.net");
+    layer_add_child( window_layer, text_layer_get_layer( bottom_text_layer ) );
+    
+}
+
+static void about_window_unload(Window *window) {
+    //menu_layer_destroy(day_menu_layer);
 }
 
 
@@ -646,17 +672,34 @@ static uint16_t day_get_num_rows_callback(struct MenuLayer *menu_layer, uint16_t
     return 4;
 }
 
-static void day_select_callback(MenuLayer *menu_layer, MenuIndex *cell_index, void *data) {
-    APP_LOG(APP_LOG_LEVEL_DEBUG, "Day Select");
-    
-    day_selected = cell_index->row;
-    
+static void push_time_slot_window() {
     time_slot_window = window_create();
     window_set_window_handlers(time_slot_window, (WindowHandlers) {
         .load = time_slot_window_load,
         .unload = time_slot_window_unload,
     });
     window_stack_push( time_slot_window, true );
+}
+
+static void push_about_window() {
+    about_window = window_create();
+    window_set_window_handlers(about_window, (WindowHandlers) {
+        .load = about_window_load,
+        .unload = about_window_unload,
+    });
+    window_stack_push( about_window, true );    
+}
+
+static void day_select_callback(MenuLayer *menu_layer, MenuIndex *cell_index, void *data) {
+    APP_LOG(APP_LOG_LEVEL_DEBUG, "Day Select");
+    
+    day_selected = cell_index->row;
+    
+    if ( day_selected == kAbout ) {
+        push_about_window();
+    } else {
+        push_time_slot_window();
+    }
 }
 
 static void day_window_load(Window *window) {

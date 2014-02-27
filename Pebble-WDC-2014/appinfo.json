@@ -18,7 +18,13 @@
         "name": "APP_ICON",
         "file": "images/icon.png",
         "menuIcon": true
+      },
+      {
+        "type": "png",
+        "name": "MM_LOGO",
+        "file": "images/mm-logo.png"
       }
+
     ]
   }
 }
