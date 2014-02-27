@@ -1,0 +1,1 @@
+Just to make sure git picks up this directory. Delete one we have real resources.
