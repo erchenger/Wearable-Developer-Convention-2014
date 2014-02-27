@@ -15,6 +15,12 @@ static int time_slot_selected;
 #define kWed1045slot 4
 #define kWed130slot 6
 
+#define kThu830slot 1
+#define kThu1100slot 4
+#define kThu1215slot 6
+#define kThu145slot 8
+#define kThu315slot 10
+
 #define kWednesday 0
 #define kThursday 1
 #define kFriday 2
@@ -71,6 +77,68 @@ static void draw_thursday_830_cell ( GContext* ctx, Layer *cell_layer, int index
     }    
 }
 
+static void draw_thursday_1100_cell ( GContext* ctx, Layer *cell_layer, int index ){
+    switch (index) {
+        case 0:
+            custom_cell_draw(ctx, cell_layer, "Developers in the Doctor’s Office: How Wearables are Changing the way we give and Receive Care", "Andrei Pop", "Intermediate");
+            break;
+        case 1:
+            custom_cell_draw(ctx, cell_layer, "Glassware UI Design", "Matt Abdou", "Overview");
+            break;
+        case 2:
+            custom_cell_draw(ctx, cell_layer, "Security Challenges in Wearables", "Ray Potter", "Overview");
+            break;
+        case 3:
+            custom_cell_draw(ctx, cell_layer, "Using WearScript for Powerful Rapid Prototyping on Google Glass", "Brandyn White", "Overview");
+            break;
+    }    
+}
+
+static void draw_thursday_1215_cell ( GContext* ctx, Layer *cell_layer, int index ){
+    switch (index) {
+        case 0:
+            custom_cell_draw(ctx, cell_layer, "Ensuring Your Wearable Apps Delight Users and Beat the Competition", "John Montgomery", "Overview (sponsored by uTest)");
+            break;
+        case 1:
+            custom_cell_draw(ctx, cell_layer, "Sony SmartWatch 2: Get a Headstart on Wearable Apps Development", "Anupam Nath", "Overview (sponsored by Sony)");
+            break;
+    }    
+}
+
+static void draw_thursday_145_cell ( GContext* ctx, Layer *cell_layer, int index ){
+    switch (index) {
+        case 0:
+            custom_cell_draw(ctx, cell_layer, "APIs and Hardware: The Current Tradeoff", "Fabrizio Filippini", "Intermediate (Code)");
+            break;
+        case 1:
+            custom_cell_draw(ctx, cell_layer, "Hybrid Glassware", "Jenny Murphy", "Advanced (Code)");
+            break;
+        case 2:
+            custom_cell_draw(ctx, cell_layer, "Publishing Your Google Glass App", "Matt Abdou", "Overview");
+            break;
+        case 3:
+            custom_cell_draw(ctx, cell_layer, "Wearable Springboard: High Performance, Low Power Motion Technology", "David B. Karlin", "Intermediate");
+            break;
+    }    
+}
+
+static void draw_thursday_315_cell ( GContext* ctx, Layer *cell_layer, int index ){
+    switch (index) {
+        case 0:
+            custom_cell_draw(ctx, cell_layer, "Beyond Activity Trackers: Sport Wearables Design", "Jen Costillo", "Advanced (Code)");
+            break;
+        case 1:
+            custom_cell_draw(ctx, cell_layer, "Deep Dive into Google Glass Live Cards", "Luis de la Rosa", "Advanced (Code)");
+            break;
+        case 2:
+            custom_cell_draw(ctx, cell_layer, "Social Smarts for Small Screens", "Sonia Koesterer", "Overview");
+            break;
+        case 3:
+            custom_cell_draw(ctx, cell_layer, "When Microwatts Are Precious: Battery Tips for Wearable Apps", "Mark Murphy", "Overview");
+            break;
+    }    
+}
+
 static void draw_wednesday_830_cell ( GContext* ctx, Layer *cell_layer, int index ){
     switch (index) {
         case 0:
@@ -105,7 +173,7 @@ static void draw_wednesday_1045_cell ( GContext* ctx, Layer *cell_layer, int ind
 static void draw_wednesday_130_cell ( GContext* ctx, Layer *cell_layer, int index ){
     switch (index) {
         case 0:
-            custom_cell_draw(ctx, cell_layer, "Building Wearable Technology Applications for Behavior Modification: A Hands-On Tutorial", "Ashley Beattie", "Advanced Tutorial (Code)");
+            custom_cell_draw(ctx, cell_layer, "Building Wearable Technology Applications for Behavior Modification", "Ashley Beattie", "Advanced Tutorial (Code)");
             break;
         case 1:
             custom_cell_draw(ctx, cell_layer, "Hardware Glassware: Building Bluetooth-Enabled Accessories for Glass", "Zack Freedman", "Advanced Tutorial (Code)");
@@ -136,9 +204,22 @@ static void draw_wednesday_cell( GContext* ctx, Layer *cell_layer, int index ) {
 
 static void draw_thursday_cell( GContext* ctx, Layer *cell_layer, int index ) {
     switch (time_slot_selected) {
-        default:
+        case kThu830slot:
             draw_thursday_830_cell( ctx, cell_layer, index);
             break;
+        case kThu1100slot:
+            draw_thursday_1100_cell( ctx, cell_layer, index);
+            break;
+        case kThu1215slot:
+            draw_thursday_1215_cell( ctx, cell_layer, index);
+            break;
+        case kThu145slot:
+            draw_thursday_145_cell( ctx, cell_layer, index);
+            break;
+        case kThu315slot:
+            draw_thursday_315_cell( ctx, cell_layer, index);
+            break;
+            
     }
 }
 
@@ -171,6 +252,10 @@ static void classes_draw_row_callback(GContext* ctx, Layer *cell_layer, MenuInde
 static uint16_t classes_get_num_rows_callback(struct MenuLayer *menu_layer, uint16_t section_index, void *data) {
     if ( day_selected == kWednesday && time_slot_selected == kWed1045slot ) {
         return 3;
+    }
+    
+    if ( day_selected == kThursday && time_slot_selected == kThu1215slot ) {
+        return 2;
     }
     
     return 4;
@@ -245,7 +330,7 @@ static void draw_thursday_time_slot_cell(GContext* ctx, Layer *cell_layer, MenuI
         case 0:
             menu_cell_basic_draw(ctx, cell_layer, "7:30 - 8:30am", "Morning Coffee", NULL);
             break;
-        case 1:
+        case kThu830slot:
             menu_cell_basic_draw(ctx, cell_layer, "8:30 - 9:30am", "Technical Classes", NULL);
             break;
         case 2:
@@ -254,25 +339,25 @@ static void draw_thursday_time_slot_cell(GContext* ctx, Layer *cell_layer, MenuI
         case 3:
             menu_cell_basic_draw(ctx, cell_layer, "10:30 - 10:45am", "Keynote: Jenny Murphy", NULL);
             break;
-        case 4:
+        case kThu1100slot:
             menu_cell_basic_draw(ctx, cell_layer, "11:00am - 12:00pm", "Technical Classes", NULL);
             break;
         case 5:
             menu_cell_basic_draw(ctx, cell_layer, "12:00 - 7:45pm", "Exhibit Hall Open", NULL);
             break;
-        case 6:
+        case kThu1215slot:
             menu_cell_basic_draw(ctx, cell_layer, "12:15 - 12:45pm", "Sponsored Classes", NULL);
             break;
         case 7:
             menu_cell_basic_draw(ctx, cell_layer, "12:45 - 1:45pm", "Lunch", NULL);
             break;
-        case 8:
+        case kThu145slot:
             menu_cell_basic_draw(ctx, cell_layer, "1:45 - 2:45pm", "Technical Classes", NULL);
             break;
         case 9:
             menu_cell_basic_draw(ctx, cell_layer, "2:45 - 3:15pm", "Ice Cream Social", NULL);
             break;
-        case 10:
+        case kThu315slot:
             menu_cell_basic_draw(ctx, cell_layer, "3:15 - 4:15pm", "Technical Classes", NULL);
             break;
         case 11:
