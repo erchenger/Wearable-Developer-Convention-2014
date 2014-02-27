@@ -655,13 +655,13 @@ static void day_draw_row_callback(GContext* ctx, Layer *cell_layer, MenuIndex *c
     const int index = cell_index->row;
     switch (index) {
         case kWednesday:
-            menu_cell_basic_draw(ctx, cell_layer, "Wednesday", "March 5", NULL);
+            menu_cell_basic_draw(ctx, cell_layer, "Wednesday", "March 5", gbitmap_create_with_resource( RESOURCE_ID_CALENDAR_ICON ) );
             break;
         case kThursday:
-            menu_cell_basic_draw(ctx, cell_layer, "Thursday", "March 6", NULL);
+            menu_cell_basic_draw(ctx, cell_layer, "Thursday", "March 6", gbitmap_create_with_resource( RESOURCE_ID_CALENDAR_ICON ));
             break;
         case kFriday:
-            menu_cell_basic_draw(ctx, cell_layer, "Friday", "March 7", NULL);
+            menu_cell_basic_draw(ctx, cell_layer, "Friday", "March 7", gbitmap_create_with_resource( RESOURCE_ID_CALENDAR_ICON ));
             break;
         case 3:
             menu_cell_basic_draw(ctx, cell_layer, "About", NULL, NULL);

@@ -23,8 +23,12 @@
         "type": "png",
         "name": "MM_LOGO",
         "file": "images/mm-logo.png"
+      },
+      {
+        "type": "png",
+        "name": "CALENDAR_ICON",
+        "file": "images/calendar-icon.png"
       }
-
     ]
   }
 }
