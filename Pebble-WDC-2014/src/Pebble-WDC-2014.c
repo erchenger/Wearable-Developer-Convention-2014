@@ -11,6 +11,14 @@ static MenuLayer *classes_menu_layer;
 static int day_selected;
 static int time_slot_selected;
 
+#define kWed830slot 2
+#define kWed1045slot 4
+#define kWed130slot 6
+
+#define kWednesday 0
+#define kThursday 1
+#define kFriday 2
+
 // Classes Window
 
 
@@ -60,8 +68,70 @@ static void draw_thursday_830_cell ( GContext* ctx, Layer *cell_layer, int index
         case 3:
             custom_cell_draw(ctx, cell_layer, "Android NDK Primer", "Ron Munitz", "Overview");
             break;
+    }    
+}
+
+static void draw_wednesday_830_cell ( GContext* ctx, Layer *cell_layer, int index ){
+    switch (index) {
+        case 0:
+            custom_cell_draw(ctx, cell_layer, "Developing for Wearable Devices with Android", "Dario Laverde", "Intermediate Tutorial (Code)");
+            break;
+        case 1:
+            custom_cell_draw(ctx, cell_layer, "Filming and Broadcasting with Google Glass", "Jeris JC Miller", "Overview Tutorial");
+            break;
+        case 2:
+            custom_cell_draw(ctx, cell_layer, "Headless Android", "Ron Munitz", "Intermediate Tutorial (Code)");
+            break;
+        case 3:
+            custom_cell_draw(ctx, cell_layer, "How to Develop Your Wearable Electronics from Idea to Production", "Fabrizio Filippini", "Intermediate Tutorial (Code)");
+            break;
+    }    
+}
+
+static void draw_wednesday_1045_cell ( GContext* ctx, Layer *cell_layer, int index ){
+    switch (index) {
+        case 0:
+            custom_cell_draw(ctx, cell_layer, "Introduction to Wearable Development with Pebble", "Thomas Sarlandie", "Advanced Tutorial (Code)");
+            break;
+        case 1:
+            custom_cell_draw(ctx, cell_layer, "Prototyping New Wearable Experiences with Soft Electronics and Arduinos", "Pearl Chen", "Intermediate Tutorial (Code)");
+            break;
+        case 2:
+            custom_cell_draw(ctx, cell_layer, "Transitioning from Android to Google Glass", "Luis de la Rosa", "Intermediate Tutorial (Code)");
+            break;
+    }    
+}
+
+static void draw_wednesday_130_cell ( GContext* ctx, Layer *cell_layer, int index ){
+    switch (index) {
+        case 0:
+            custom_cell_draw(ctx, cell_layer, "Building Wearable Technology Applications for Behavior Modification: A Hands-On Tutorial", "Ashley Beattie", "Advanced Tutorial (Code)");
+            break;
+        case 1:
+            custom_cell_draw(ctx, cell_layer, "Hardware Glassware: Building Bluetooth-Enabled Accessories for Glass", "Zack Freedman", "Advanced Tutorial (Code)");
+            break;
+        case 2:
+            custom_cell_draw(ctx, cell_layer, "ROM Cooking: A Hands-on, \"Do it at Home\" Approach", "Ron Munitz", "Intermediate Tutorial (Code)");
+            break;
+        case 3:
+            custom_cell_draw(ctx, cell_layer, "Wearable Hacking with Raspberry Pi, Google Glass, Motors and Camera", "Mark Scheel", "Overview Tutorial (Code)");
+            break;
+    }    
+}
+
+static void draw_wednesday_cell( GContext* ctx, Layer *cell_layer, int index ) {
+    switch (time_slot_selected) {
+        case kWed830slot:
+            draw_wednesday_830_cell( ctx, cell_layer, index);
+            break;
+        case kWed1045slot:
+            draw_wednesday_1045_cell( ctx, cell_layer, index);
+            break;
+        case kWed130slot:
+            draw_wednesday_130_cell( ctx, cell_layer, index);
+            break;
+            
     }
-    
 }
 
 static void draw_thursday_cell( GContext* ctx, Layer *cell_layer, int index ) {
@@ -72,21 +142,37 @@ static void draw_thursday_cell( GContext* ctx, Layer *cell_layer, int index ) {
     }
 }
 
-static void classes_draw_row_callback(GContext* ctx, Layer *cell_layer, MenuIndex *cell_index, void *data) {
-    const int index = cell_index->row;
-    switch ( day_selected ) {
+static void draw_friday_cell( GContext* ctx, Layer *cell_layer, int index ) {
+    switch (time_slot_selected) {
         default:
-            draw_thursday_cell( ctx, cell_layer, index);
+            draw_thursday_830_cell( ctx, cell_layer, index);
             break;
     }
 }
 
-static uint16_t classes_get_num_rows_callback(struct MenuLayer *menu_layer, uint16_t section_index, void *data) {
+static void classes_draw_row_callback(GContext* ctx, Layer *cell_layer, MenuIndex *cell_index, void *data) {
+    const int index = cell_index->row;
     switch ( day_selected ) {
-        case 0:
-            return 4;
+        case kWednesday:
+            draw_wednesday_cell( ctx, cell_layer, index);
             break;
+            
+        case kThursday:
+            draw_thursday_cell( ctx, cell_layer, index);
+            break;
+        
+        case kFriday:
+            draw_friday_cell( ctx, cell_layer, index);
+            break;
+
     }
+}
+
+static uint16_t classes_get_num_rows_callback(struct MenuLayer *menu_layer, uint16_t section_index, void *data) {
+    if ( day_selected == kWednesday && time_slot_selected == kWed1045slot ) {
+        return 3;
+    }
+    
     return 4;
 }
 
@@ -129,19 +215,19 @@ static void draw_wednesday_time_slot_cell(GContext* ctx, Layer *cell_layer, Menu
         case 1:
             menu_cell_basic_draw(ctx, cell_layer, "7:30 - 8:30am", "Morning Coffee", NULL);
             break;
-        case 2:
+        case kWed830slot:
             menu_cell_basic_draw(ctx, cell_layer, "8:30 - 10:30am", "Tutorials", NULL);
             break;
         case 3:
             menu_cell_basic_draw(ctx, cell_layer, "10:30 - 10:45am", "Coffee Break", NULL);
             break;
-        case 4:
+        case kWed1045slot:
             menu_cell_basic_draw(ctx, cell_layer, "10:45am - 12:45pm", "Tutorials", NULL);
             break;
         case 5:
             menu_cell_basic_draw(ctx, cell_layer, "12:45 - 1:30pm", "Lunch", NULL);
             break;
-        case 6:
+        case kWed130slot:
             menu_cell_basic_draw(ctx, cell_layer, "1:30 - 3:30pm", "Tutorials", NULL);
             break;
         case 7:
@@ -250,13 +336,13 @@ static int16_t time_slot_get_cell_height_callback(struct MenuLayer *menu_layer, 
 
 static void time_slot_draw_row_callback(GContext* ctx, Layer *cell_layer, MenuIndex *cell_index, void *data) {
     switch ( day_selected ) {
-        case 0:
+        case kWednesday:
             draw_wednesday_time_slot_cell( ctx, cell_layer, cell_index, data );
             break;
-        case 1:
+        case kThursday:
             draw_thursday_time_slot_cell( ctx, cell_layer, cell_index, data );
             break;
-        default:
+        case kFriday:
             draw_friday_time_slot_cell( ctx, cell_layer, cell_index, data );
             break;
     }
@@ -264,13 +350,13 @@ static void time_slot_draw_row_callback(GContext* ctx, Layer *cell_layer, MenuIn
 
 static uint16_t time_slot_get_num_rows_callback(struct MenuLayer *menu_layer, uint16_t section_index, void *data) {
     switch ( day_selected ) {
-        case 0:
+        case kWednesday:
             return 9;
             break;
-        case 1:
+        case kThursday:
             return 14;
             break;
-        default:
+        case kFriday:
             return 12;
             break;
     }
@@ -329,13 +415,13 @@ static int16_t day_get_cell_height_callback(struct MenuLayer *menu_layer, MenuIn
 static void day_draw_row_callback(GContext* ctx, Layer *cell_layer, MenuIndex *cell_index, void *data) {
     const int index = cell_index->row;
     switch (index) {
-        case 0:
+        case kWednesday:
             menu_cell_basic_draw(ctx, cell_layer, "Wednesday", "March 5", NULL);
             break;
-        case 1:
+        case kThursday:
             menu_cell_basic_draw(ctx, cell_layer, "Thursday", "March 6", NULL);
             break;
-        case 2:
+        case kFriday:
             menu_cell_basic_draw(ctx, cell_layer, "Friday", "March 7", NULL);
             break;
         case 3:
