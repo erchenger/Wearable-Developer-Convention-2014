@@ -2,19 +2,123 @@
 
 static Window *day_window;
 static Window *time_slot_window;
+static Window *classes_window;
 
 static MenuLayer *day_menu_layer;
 static MenuLayer *time_slot_menu_layer;
+static MenuLayer *classes_menu_layer;
 
 static int day_selected;
 static int time_slot_selected;
 
+// Classes Window
+
+
+static int16_t classes_get_cell_height_callback(struct MenuLayer *menu_layer, MenuIndex *cell_index, void *data) {
+    return 132;
+}
+
+static void custom_cell_draw(GContext* ctx, Layer *cell_layer, char *title, char *speaker, char *level) {
+	GRect bounds = layer_get_frame(cell_layer);
+	graphics_context_set_text_color	(ctx, GColorBlack);
+	graphics_draw_text(ctx,
+                       title,
+                       fonts_get_system_font(FONT_KEY_GOTHIC_18_BOLD),
+                       GRect(0, 0, bounds.size.w, 90),
+                       GTextOverflowModeWordWrap,
+                       GTextAlignmentLeft,
+                       NULL);
+	graphics_draw_text(ctx,
+                       speaker,
+                       fonts_get_system_font(FONT_KEY_GOTHIC_14),
+                       GRect(0, 95, bounds.size.w, 20),
+                       GTextOverflowModeWordWrap,
+                       GTextAlignmentLeft,
+                       NULL);
+    
+	graphics_draw_text(ctx,
+                       level,
+                       fonts_get_system_font(FONT_KEY_GOTHIC_14_BOLD),
+                       GRect(0, 110, bounds.size.w, 20),
+                       GTextOverflowModeWordWrap,
+                       GTextAlignmentLeft,
+                       NULL);
+    
+}
+
+static void draw_thursday_830_cell ( GContext* ctx, Layer *cell_layer, int index ){
+    switch (index) {
+        case 0:
+            custom_cell_draw(ctx, cell_layer, "An Overview of Computer Vision and how it can Enable Perceptive Wearables", "Goksel Dedeoglu", "Overview");
+            break;
+        case 1:
+            custom_cell_draw(ctx, cell_layer, "API and GDK Design for Google Glass", "Cecilia Abadie", "Overview");
+            break;
+        case 2:
+            custom_cell_draw(ctx, cell_layer, "Creating Products for Google Glass at the Highest Level", "Mike DiGiovanni", "Overview");
+            break;
+        case 3:
+            custom_cell_draw(ctx, cell_layer, "Android NDK Primer", "Ron Munitz", "Overview");
+            break;
+    }
+    
+}
+
+static void draw_thursday_cell( GContext* ctx, Layer *cell_layer, int index ) {
+    switch (time_slot_selected) {
+        default:
+            draw_thursday_830_cell( ctx, cell_layer, index);
+            break;
+    }
+}
+
+static void classes_draw_row_callback(GContext* ctx, Layer *cell_layer, MenuIndex *cell_index, void *data) {
+    const int index = cell_index->row;
+    switch ( day_selected ) {
+        default:
+            draw_thursday_cell( ctx, cell_layer, index);
+            break;
+    }
+}
+
+static uint16_t classes_get_num_rows_callback(struct MenuLayer *menu_layer, uint16_t section_index, void *data) {
+    switch ( day_selected ) {
+        case 0:
+            return 4;
+            break;
+    }
+    return 4;
+}
+
+static void classes_window_load(Window *window) {
+    APP_LOG(APP_LOG_LEVEL_DEBUG, "classes_window_load start");
+    
+    Layer *window_layer = window_get_root_layer(window);
+    GRect bounds = layer_get_bounds(window_layer);
+    
+    GRect window_frame = layer_get_frame(window_layer);
+    classes_menu_layer = menu_layer_create(window_frame);
+    menu_layer_set_callbacks(classes_menu_layer, NULL, (MenuLayerCallbacks) {
+        .get_cell_height = (MenuLayerGetCellHeightCallback) classes_get_cell_height_callback,
+        .draw_row = (MenuLayerDrawRowCallback) classes_draw_row_callback,
+        .get_num_rows = (MenuLayerGetNumberOfRowsInSectionsCallback) classes_get_num_rows_callback
+    });
+    menu_layer_set_click_config_onto_window(classes_menu_layer, window);
+    layer_add_child(window_layer, menu_layer_get_layer(classes_menu_layer));
+    APP_LOG(APP_LOG_LEVEL_DEBUG, "classes_window_load end");
+    
+}
+
+static void classes_window_unload(Window *window) {
+    time_slot_selected = -1;
+}
+
+
+
+
+
 // Time Slot Window
 
-
-static int16_t time_slot_get_cell_height_callback(struct MenuLayer *menu_layer, MenuIndex *cell_index, void *data) {
-    return 44;
-}
 
 static void draw_wednesday_time_slot_cell(GContext* ctx, Layer *cell_layer, MenuIndex *cell_index, void *data) {
     const int index = cell_index->row;
@@ -139,6 +243,10 @@ static void draw_friday_time_slot_cell(GContext* ctx, Layer *cell_layer, MenuInd
     }
 }
 
+static int16_t time_slot_get_cell_height_callback(struct MenuLayer *menu_layer, MenuIndex *cell_index, void *data) {
+    return 44;
+}
+
 
 static void time_slot_draw_row_callback(GContext* ctx, Layer *cell_layer, MenuIndex *cell_index, void *data) {
     switch ( day_selected ) {
@@ -170,8 +278,18 @@ static uint16_t time_slot_get_num_rows_callback(struct MenuLayer *menu_layer, ui
 }
 
 static void time_slot_select_callback(MenuLayer *menu_layer, MenuIndex *cell_index, void *data) {
-    APP_LOG(APP_LOG_LEVEL_DEBUG, "selected time slot");
+    APP_LOG(APP_LOG_LEVEL_DEBUG, "Time Slot Select");
+    
+    time_slot_selected = cell_index->row;
+    
+    classes_window = window_create();
+    window_set_window_handlers(classes_window, (WindowHandlers) {
+        .load = classes_window_load,
+        .unload = classes_window_unload,
+    });
+    window_stack_push( classes_window, true );
 }
+
 
 
 static void time_slot_window_load(Window *window) {
