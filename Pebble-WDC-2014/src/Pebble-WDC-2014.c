@@ -21,6 +21,12 @@ static int time_slot_selected;
 #define kThu145slot 8
 #define kThu315slot 10
 
+#define kFri845slot 2
+#define kFri1000slot 3
+#define kFri1130slot 6
+#define kFri145slot 8
+#define kFri330slot 10
+
 #define kWednesday 0
 #define kThursday 1
 #define kFriday 2
@@ -59,6 +65,93 @@ static void custom_cell_draw(GContext* ctx, Layer *cell_layer, char *title, char
                        NULL);
     
 }
+
+static void draw_friday_845_cell ( GContext* ctx, Layer *cell_layer, int index ){
+    switch (index) {
+        case 0:
+            custom_cell_draw(ctx, cell_layer, "Analyze Communications and Security from Wearables", "Wilson Mar", "Intermediate");
+            break;
+        case 1:
+            custom_cell_draw(ctx, cell_layer, "Building Wearable Technology Applications for Behavior Modification: A Conceptual Overview", "Ashley Beattie", "Overview");
+            break;
+        case 2:
+            custom_cell_draw(ctx, cell_layer, "Harnessing the Power of the Other Sensors in Google Glass: There's more than just the Camera", "Kaiser-Pendergrast/Steinerman", "Overview");
+            break;
+        case 3:
+            custom_cell_draw(ctx, cell_layer, "Leveraging Open-Source Hardware and Software for Perceptive Wearables", "Goksel Dedeoglu", "Overview");
+            break;
+    }    
+}
+
+static void draw_friday_1000_cell ( GContext* ctx, Layer *cell_layer, int index ){
+    switch (index) {
+        case 0:
+            custom_cell_draw(ctx, cell_layer, "Beyond Glass: Connecting the GDK with App Engine Web Services", "Kaiser-Pendergrast/Steinerman", "Intermediate (Code)");
+            break;
+        case 1:
+            custom_cell_draw(ctx, cell_layer, "API and GDK Design for Google Glass", "Cecilia Abadie", "Overview");
+            break;
+        case 2:
+            custom_cell_draw(ctx, cell_layer, "Design and Engineering Principles for Wearables 2.0", "Rachel Kalmar", "Overview");
+            break;
+        case 3:
+            custom_cell_draw(ctx, cell_layer, "Native App Development on Google Glass", "Jim McKeeth", "Intermediate (Code)");
+            break;
+    }    
+}
+
+static void draw_friday_1130_cell ( GContext* ctx, Layer *cell_layer, int index ){
+    switch (index) {
+        case 0:
+            custom_cell_draw(ctx, cell_layer, "Developing and Designing Finance Glassware", "Lawrence Wong", "Intermediate (Code)");
+            break;
+        case 1:
+            custom_cell_draw(ctx, cell_layer, "Gradle and Your Android Wearable Projects", "Mark Murphy", "Intermediate (Code)");
+            break;
+        case 2:
+            custom_cell_draw(ctx, cell_layer, "Made in China: How to Build Hardware with Less Than $10k", "Jason Gui", "Overview");
+            break;
+        case 3:
+            custom_cell_draw(ctx, cell_layer, "Wearable and Bluetooth – Exploring the Details of Wireless Communications", "Vincent Gao", "Intermediate (Code)");
+            break;
+    }    
+}
+
+static void draw_friday_145_cell ( GContext* ctx, Layer *cell_layer, int index ){
+    switch (index) {
+        case 0:
+            custom_cell_draw(ctx, cell_layer, "An Emotional Approach to the Design of Wearable Medical Devices", "Shaun Rahimi", "Overview (Code)");
+            break;
+        case 1:
+            custom_cell_draw(ctx, cell_layer, "Glass Development: Common use cases, Lessons Learned and Gotchas!", "Tejas Lagvankar", "Intermediate (Code)");
+            break;
+        case 2:
+            custom_cell_draw(ctx, cell_layer, "Is Thought the Future of Wearable Input?", "Jim McKeeth", "Intermediate (Code)");
+            break;
+        case 3:
+            custom_cell_draw(ctx, cell_layer, "Lean Hardware: Positioning, Financing and Retail", "Benjamin Joffe", "Overview");
+            break;
+    }    
+}
+
+static void draw_friday_330_cell ( GContext* ctx, Layer *cell_layer, int index ){
+    switch (index) {
+        case 0:
+            custom_cell_draw(ctx, cell_layer, "APIs: The Secret to Making Wearables Relevant", "Hussain Chinoy/Ashish Vaid", "Intermediate (Code)");
+            break;
+        case 1:
+            custom_cell_draw(ctx, cell_layer, "Building Wearable Devices Through Rapid Prototyping", "Moe Tanabian", "Advanced (Code)");
+            break;
+        case 2:
+            custom_cell_draw(ctx, cell_layer, "Elegance, a Design Philosophy", "Mladen Barbaric", "Intermediate");
+            break;
+        case 3:
+            custom_cell_draw(ctx, cell_layer, "Making Android Bluetooth 4.0 Work", "Chris Herbert", "Advanced");
+            break;
+    }    
+}
+
+
 
 static void draw_thursday_830_cell ( GContext* ctx, Layer *cell_layer, int index ){
     switch (index) {
@@ -225,8 +318,20 @@ static void draw_thursday_cell( GContext* ctx, Layer *cell_layer, int index ) {
 
 static void draw_friday_cell( GContext* ctx, Layer *cell_layer, int index ) {
     switch (time_slot_selected) {
-        default:
-            draw_thursday_830_cell( ctx, cell_layer, index);
+        case kFri845slot:
+            draw_friday_845_cell( ctx, cell_layer, index);
+            break;
+        case kFri1000slot:
+            draw_friday_1000_cell( ctx, cell_layer, index);
+            break;
+        case kFri1130slot:
+            draw_friday_1130_cell( ctx, cell_layer, index);
+            break;
+        case kFri145slot:
+            draw_friday_145_cell( ctx, cell_layer, index);
+            break;
+        case kFri330slot:
+            draw_friday_330_cell( ctx, cell_layer, index);
             break;
     }
 }
@@ -381,10 +486,10 @@ static void draw_friday_time_slot_cell(GContext* ctx, Layer *cell_layer, MenuInd
         case 1:
             menu_cell_basic_draw(ctx, cell_layer, "7:30 - 8:45", "Morning Coffee", NULL);
             break;
-        case 2:
+        case kFri845slot:
             menu_cell_basic_draw(ctx, cell_layer, "8:45 - 9:45am", "Technical Classes", NULL);
             break;
-        case 3:
+        case kFri1000slot:
             menu_cell_basic_draw(ctx, cell_layer, "10:00 - 11:00am", "Technical Classes", NULL);
             break;
         case 4:
@@ -393,19 +498,19 @@ static void draw_friday_time_slot_cell(GContext* ctx, Layer *cell_layer, MenuInd
         case 5:
             menu_cell_basic_draw(ctx, cell_layer, "11:00 - 11:30am", "Coffee Break", NULL);
             break;
-        case 6:
+        case kFri1130slot:
             menu_cell_basic_draw(ctx, cell_layer, "11:30am - 12:30pm", "Technical Classes", NULL);
             break;
         case 7:
             menu_cell_basic_draw(ctx, cell_layer, "12:45 - 1:45pm", "Lunch", NULL);
             break;
-        case 8:
+        case kFri145slot:
             menu_cell_basic_draw(ctx, cell_layer, "1:45 - 2:45pm", "Technical Classes", NULL);
             break;
         case 9:
             menu_cell_basic_draw(ctx, cell_layer, "2:45 - 3:15pm", "Winner's Circle", NULL);
             break;
-        case 10:
+        case kFri330slot:
             menu_cell_basic_draw(ctx, cell_layer, "3:30 - 4:30pm", "Technical Classes", NULL);
             break;
         case 11:
