@@ -77,7 +77,7 @@ public class DateActivity extends Activity {
 		if(mCurrentDate.before(new Date(DateConstants.MAR_SEVENTH)))
 			mCards.add(CardUtils.createCard(this,"Friday, March 7th"));
 		
-		mCards.add(CardUtils.createCard(this,"Brought to you by Elliott Chenger and the folks at Mutual Mobile", "Twitter: @echenger", R.drawable.elliott_chenger));
+		mCards.add(CardUtils.createCard(this,"The WDC Schedule Glassware was expertly crafted by Elliott Chenger from Mutual Mobile", "Twitter: @echenger", R.drawable.elliott_chenger));
 	}
 
 }
