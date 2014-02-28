@@ -4,7 +4,7 @@
   "longName": "Wearable DevCon",
   "companyName": "Mutual Mobile",
   "versionCode": 1,
-  "versionLabel": "0.1.0",
+  "versionLabel": "0.2.0",
   "watchapp": {
     "watchface": false
   },
