@@ -69,6 +69,16 @@ This is the formate for the Event JSON, which we use to tell what events are hap
 }
 ```
 
+# Installation
+
+## Glass
+
+Elliott will doubtless put interesting things in here.
+
+## Pebble
+
+The easiest way to install the Pebble app is simply to use the Pebble App Store, where it's listed as "WDC 2014 Schedule". You can also find it on [mypebblefaces.com](http://www.mypebblefaces.com/apps/2509/10559/) or (of course) build and install it yourself from the source.
+
 ##Developed By
 - [Elliott Chenger](https://twitter.com/Echenger)
 - Sean McMains
