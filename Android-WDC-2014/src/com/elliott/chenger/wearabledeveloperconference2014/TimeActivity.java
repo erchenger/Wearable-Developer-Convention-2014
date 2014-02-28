@@ -35,7 +35,7 @@ public class TimeActivity extends Activity{
 	private Long mSelectedDate, mSelectedStartTime, mSelectedEndTime;
 	private Gson mGson;
 	private TimesByDate mEventTimes;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -43,7 +43,7 @@ public class TimeActivity extends Activity{
 		mSelectedDate = getIntent().getExtras().getLong(DateActivity.DATE);
 		loadJson();
 		createCardsBasedOnDate();
-		
+
 		mCardScrollView = new CardScrollView(this);
 		mCardScrollAdapter = new ImpCardScrollAdapter(mCards);
 		mCardScrollView.setAdapter(mCardScrollAdapter);
@@ -81,7 +81,7 @@ public class TimeActivity extends Activity{
 
 	private void createCardsBasedOnDate() {
 		mCards = new ArrayList<Card>();
-		mCards.add(CardUtils.createCard(this,"Select a time for "+getSelectedDay(), "Swipe left or right"));
+		mCards.add(CardUtils.createCard(this,getResources().getString(R.string.select_a_time)+getSelectedDay(), getResources().getString(R.string.swipe_message)));
 		for(EventTime times:mEventTimes.eventTimes){
 			mCards.add(CardUtils.createCard(this,formatTimeToString(times.startTime,times.endTime)));
 		}
@@ -90,14 +90,13 @@ public class TimeActivity extends Activity{
 
 	private String getSelectedDay() {
 		if(mSelectedDate.equals(DateConstants.MAR_FIFTH)){
-			return "Wednesday, March 5th";
+			return getResources().getString(R.string.wednesday);
 		}
 		else if(mSelectedDate.equals(DateConstants.MAR_SIXTH)){
-			return "Thursday, March 6th";
+			return getResources().getString(R.string.thursday);
 		}
 		else if(mSelectedDate.equals(DateConstants.MAR_SEVENTH)){
-			return "Friday, March 7th";
-
+			return getResources().getString(R.string.friday);
 		}
 		else{
 			return null;

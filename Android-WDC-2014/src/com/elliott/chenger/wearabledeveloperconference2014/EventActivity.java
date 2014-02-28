@@ -51,7 +51,7 @@ public class EventActivity extends Activity{
 
 	private void createCardsBasedOnEvents() {
 		mCards = new ArrayList<Card>();
-		mCards.add(CardUtils.createCard(this,"Select an Event", "Swipe left or right"));
+		mCards.add(CardUtils.createCard(this,getResources().getString(R.string.select_an_event), getResources().getString(R.string.swipe_message)));
 		for(Event event:mEvents.events){
 			if(event.startTime.equals(mSelectedStartTime) && event.endTime.equals(mSelectedEndTime)){
 				mCards.add(CardUtils.createCard(this,event.title+" ("+event.level+")","Speaker: "+event.speaker+"  Type: "+event.type));
