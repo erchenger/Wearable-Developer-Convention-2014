@@ -28,6 +28,8 @@
             android:name="com.elliott.chenger.wearabledeveloperconference2014.TimeActivity"
             android:label="Another day" >
         </activity>
+        
+        <activity android:name="com.elliott.chenger.wearabledeveloperconference2014.EventActivity"></activity>
                 
     </application>
 

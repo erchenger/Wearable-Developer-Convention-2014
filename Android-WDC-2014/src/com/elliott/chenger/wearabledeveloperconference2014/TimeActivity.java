@@ -6,7 +6,11 @@ import java.util.Date;
 import java.util.List;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 
 import com.elliott.chenger.wearabledeveloperconference2014.adapter.ImpCardScrollAdapter;
 import com.elliott.chenger.wearabledeveloperconference2014.model.EventTime;
@@ -27,7 +31,7 @@ public class TimeActivity extends Activity{
 	private List<Card> mCards;
 	private CardScrollView mCardScrollView;
 	private ImpCardScrollAdapter mCardScrollAdapter;
-	private Long mSelectedDate;
+	private Long mSelectedDate, mSelectedStartTime, mSelectedEndTime;
 	private Gson mGson;
 	private TimesByDate mEventTimes;
 	
@@ -43,6 +47,22 @@ public class TimeActivity extends Activity{
 		mCardScrollAdapter = new ImpCardScrollAdapter(mCards);
 		mCardScrollView.setAdapter(mCardScrollAdapter);
 		mCardScrollView.activate();
+		mCardScrollView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> adapter, View view, int position,
+					long arg3) {
+				if(position>0){
+					Intent intent = new Intent(TimeActivity.this, EventActivity.class);
+					mSelectedStartTime = mEventTimes.eventTimes.get(position-1).startTime;
+					mSelectedEndTime = mEventTimes.eventTimes.get(position-1).endTime;
+					intent.putExtra(START_TIME, mSelectedStartTime);
+					intent.putExtra(END_TIME, mSelectedEndTime);
+					intent.putExtra(DateActivity.DATE, mSelectedDate);
+					startActivity(intent);
+				}
+			}
+		});
 		setContentView(mCardScrollView);
 	}
 
@@ -60,12 +80,29 @@ public class TimeActivity extends Activity{
 
 	private void createCardsBasedOnDate() {
 		mCards = new ArrayList<Card>();
-		mCards.add(createCard("Select a time", "Swipe left or right"));
+		mCards.add(createCard("Select a time for "+getSelectedDay(), "Swipe left or right"));
 		for(EventTime times:mEventTimes.eventTimes){
 			mCards.add(createCard(formatTimeToString(times.startTime,times.endTime)));
 		}
 	}
 
+
+	private String getSelectedDay() {
+		if(mSelectedDate.equals(DateConstants.MAR_FIFTH)){
+			return "Wednesday, March 5th";
+		}
+		else if(mSelectedDate.equals(DateConstants.MAR_SIXTH)){
+			return "Thursday, March 6th";
+		}
+		else if(mSelectedDate.equals(DateConstants.MAR_SEVENTH)){
+			return "Friday, March 7th";
+
+		}
+		else{
+			return null;
+
+		}
+	}
 
 	private String formatTimeToString(Long startTime, Long endTime) {
 		String result = "";

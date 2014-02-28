@@ -41,7 +41,7 @@ public class DateActivity extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> adapter, View view, int position,
 					long arg3) {
-				if(position>0){
+				if(position>0&&position<4){
 					Intent intent = new Intent(DateActivity.this, TimeActivity.class);
 					Long selectedDate = 0L;
 					switch(position){
@@ -70,11 +70,13 @@ public class DateActivity extends Activity {
 		mCards = new ArrayList<Card>();
 		mCards.add(createCard("Select a date", "Swipe left or right"));
 		if(mCurrentDate.before(new Date(DateConstants.MAR_FIFTH)))
-			mCards.add(createCard("March 5th"));
+			mCards.add(createCard("Wednesday, March 5th"));
 		if(mCurrentDate.before(new Date(DateConstants.MAR_SIXTH)))
-			mCards.add(createCard("March 6th"));
+			mCards.add(createCard("Thursday, March 6th"));
 		if(mCurrentDate.before(new Date(DateConstants.MAR_SEVENTH)))
-			mCards.add(createCard("March 7th"));
+			mCards.add(createCard("Friday, March 7th"));
+		
+		mCards.add(createCard("Brought to you by Elliott Chenger and the folks at Mutual Mobile", "Twitter: @echenger", R.drawable.elliott_chenger));
 	}
 
 	private Card createCard(String text) {
@@ -88,6 +90,14 @@ public class DateActivity extends Activity {
 		card = new Card(this);
 		card.setText(text);
 		card.setFootnote(footerText);
+		return card;
+	}
+	private Card createCard(String text, String footerText,int imageId){
+		Card card;
+		card = new Card(this);
+		card.setText(text);
+		card.setFootnote(footerText);
+		card.addImage(imageId);
 		return card;
 	}
 
