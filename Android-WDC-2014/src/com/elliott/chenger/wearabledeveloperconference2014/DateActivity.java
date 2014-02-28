@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 
 import com.elliott.chenger.wearabledeveloperconference2014.adapter.ImpCardScrollAdapter;
+import com.elliott.chenger.wearabledeveloperconference2014.utils.CardUtils;
 import com.elliott.chenger.wearabledeveloperconference2014.utils.DateConstants;
 import com.google.android.glass.app.Card;
 import com.google.android.glass.widget.CardScrollView;
@@ -41,7 +42,7 @@ public class DateActivity extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> adapter, View view, int position,
 					long arg3) {
-				if(position>0){
+				if(position>0&&position<4){
 					Intent intent = new Intent(DateActivity.this, TimeActivity.class);
 					Long selectedDate = 0L;
 					switch(position){
@@ -68,27 +69,15 @@ public class DateActivity extends Activity {
 	private void createCards(){
 		mCurrentDate = new Date(System.currentTimeMillis());
 		mCards = new ArrayList<Card>();
-		mCards.add(createCard("Select a date", "Swipe left or right"));
+		mCards.add(CardUtils.createCard(this,getResources().getString(R.string.select_a_date), getResources().getString(R.string.swipe_message)));
 		if(mCurrentDate.before(new Date(DateConstants.MAR_FIFTH)))
-			mCards.add(createCard("March 5th"));
+			mCards.add(CardUtils.createCard(this,"Wednesday, March 5th"));
 		if(mCurrentDate.before(new Date(DateConstants.MAR_SIXTH)))
-			mCards.add(createCard("March 6th"));
+			mCards.add(CardUtils.createCard(this,"Thursday, March 6th"));
 		if(mCurrentDate.before(new Date(DateConstants.MAR_SEVENTH)))
-			mCards.add(createCard("March 7th"));
-	}
-
-	private Card createCard(String text) {
-		Card card;
-		card = new Card(this);
-		card.setText(text);
-		return card;
-	}
-	private Card createCard(String text, String footerText){
-		Card card;
-		card = new Card(this);
-		card.setText(text);
-		card.setFootnote(footerText);
-		return card;
+			mCards.add(CardUtils.createCard(this,"Friday, March 7th"));
+		
+		mCards.add(CardUtils.createCard(this,"The WDC Schedule Glassware was expertly crafted by Elliott Chenger from Mutual Mobile", "Twitter: @echenger", R.drawable.elliott_chenger));
 	}
 
 }

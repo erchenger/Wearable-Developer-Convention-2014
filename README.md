@@ -1,7 +1,8 @@
 Wearable Developer Convention 2014
 ==================================
 
-This repo will be the home to both the Glass and Pebble apps for the Wearable Developer Convention to help attendees view the schedule on their favorite wearable device. 
+This repo will be the home to both the Glassware and Pebble apps for the Wearable Developer Convention to help attendees view the schedule on their favorite wearable device. Forgive me (Elliott) for creating the Glassware with Eclipse and not Android Studios. We did this in a short amount of time and I am not fully switched over to AS yet. 
+
 #JSON Formatting
 ##Time
 This is the format for the Time JSON, which we use to tell what time slots occur on a certain day for the events.
@@ -69,5 +70,5 @@ This is the formate for the Event JSON, which we use to tell what events are hap
 ```
 
 ##Developed By
-- Elliott Chenger
+- [Elliott Chenger](https://twitter.com/Echenger)
 - Sean McMains

@@ -4,13 +4,19 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 
 import com.elliott.chenger.wearabledeveloperconference2014.adapter.ImpCardScrollAdapter;
 import com.elliott.chenger.wearabledeveloperconference2014.model.EventTime;
 import com.elliott.chenger.wearabledeveloperconference2014.model.TimesByDate;
+import com.elliott.chenger.wearabledeveloperconference2014.utils.CardUtils;
 import com.elliott.chenger.wearabledeveloperconference2014.utils.DateConstants;
 import com.elliott.chenger.wearabledeveloperconference2014.utils.PreloadedJson;
 import com.google.android.glass.app.Card;
@@ -27,10 +33,10 @@ public class TimeActivity extends Activity{
 	private List<Card> mCards;
 	private CardScrollView mCardScrollView;
 	private ImpCardScrollAdapter mCardScrollAdapter;
-	private Long mSelectedDate;
+	private Long mSelectedDate, mSelectedStartTime, mSelectedEndTime;
 	private Gson mGson;
 	private TimesByDate mEventTimes;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -38,11 +44,27 @@ public class TimeActivity extends Activity{
 		mSelectedDate = getIntent().getExtras().getLong(DateActivity.DATE);
 		loadJson();
 		createCardsBasedOnDate();
-		
+
 		mCardScrollView = new CardScrollView(this);
 		mCardScrollAdapter = new ImpCardScrollAdapter(mCards);
 		mCardScrollView.setAdapter(mCardScrollAdapter);
 		mCardScrollView.activate();
+		mCardScrollView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> adapter, View view, int position,
+					long arg3) {
+				if(position>0){
+					Intent intent = new Intent(TimeActivity.this, EventActivity.class);
+					mSelectedStartTime = mEventTimes.eventTimes.get(position-1).startTime;
+					mSelectedEndTime = mEventTimes.eventTimes.get(position-1).endTime;
+					intent.putExtra(START_TIME, mSelectedStartTime);
+					intent.putExtra(END_TIME, mSelectedEndTime);
+					intent.putExtra(DateActivity.DATE, mSelectedDate);
+					startActivity(intent);
+				}
+			}
+		});
 		setContentView(mCardScrollView);
 	}
 
@@ -60,31 +82,35 @@ public class TimeActivity extends Activity{
 
 	private void createCardsBasedOnDate() {
 		mCards = new ArrayList<Card>();
-		mCards.add(createCard("Select a time", "Swipe left or right"));
+		mCards.add(CardUtils.createCard(this,getResources().getString(R.string.select_a_time)+getSelectedDay(), getResources().getString(R.string.swipe_message)));
 		for(EventTime times:mEventTimes.eventTimes){
-			mCards.add(createCard(formatTimeToString(times.startTime,times.endTime)));
+			mCards.add(CardUtils.createCard(this,formatTimeToString(times.startTime,times.endTime)));
 		}
 	}
 
 
+	private String getSelectedDay() {
+		if(mSelectedDate.equals(DateConstants.MAR_FIFTH)){
+			return getResources().getString(R.string.wednesday);
+		}
+		else if(mSelectedDate.equals(DateConstants.MAR_SIXTH)){
+			return getResources().getString(R.string.thursday);
+		}
+		else if(mSelectedDate.equals(DateConstants.MAR_SEVENTH)){
+			return getResources().getString(R.string.friday);
+		}
+		else{
+			return null;
+
+		}
+	}
+
 	private String formatTimeToString(Long startTime, Long endTime) {
 		String result = "";
-		SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mma");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("h:mma", Locale.US);
 		result = dateFormat.format(new Date(startTime))+" to "+dateFormat.format(new Date(endTime));
 		return result;
 	}
 
-	private Card createCard(String text) {
-		Card card;
-		card = new Card(this);
-		card.setText(text);
-		return card;
-	}
-	private Card createCard(String text, String footerText){
-		Card card;
-		card = new Card(this);
-		card.setText(text);
-		card.setFootnote(footerText);
-		return card;
-	}
+
 }
