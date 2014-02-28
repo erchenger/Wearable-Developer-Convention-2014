@@ -69,5 +69,5 @@ This is the formate for the Event JSON, which we use to tell what events are hap
 ```
 
 ##Developed By
-- Elliott Chenger
+- [Elliott Chenger](https://twitter.com/Echenger)
 - Sean McMains
