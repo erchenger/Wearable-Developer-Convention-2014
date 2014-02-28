@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 
 import com.elliott.chenger.wearabledeveloperconference2014.adapter.ImpCardScrollAdapter;
+import com.elliott.chenger.wearabledeveloperconference2014.utils.CardUtils;
 import com.elliott.chenger.wearabledeveloperconference2014.utils.DateConstants;
 import com.google.android.glass.app.Card;
 import com.google.android.glass.widget.CardScrollView;
@@ -68,37 +69,15 @@ public class DateActivity extends Activity {
 	private void createCards(){
 		mCurrentDate = new Date(System.currentTimeMillis());
 		mCards = new ArrayList<Card>();
-		mCards.add(createCard("Select a date", "Swipe left or right"));
+		mCards.add(CardUtils.createCard(this,getResources().getString(R.string.select_a_date), getResources().getString(R.string.swipe_message)));
 		if(mCurrentDate.before(new Date(DateConstants.MAR_FIFTH)))
-			mCards.add(createCard("Wednesday, March 5th"));
+			mCards.add(CardUtils.createCard(this,"Wednesday, March 5th"));
 		if(mCurrentDate.before(new Date(DateConstants.MAR_SIXTH)))
-			mCards.add(createCard("Thursday, March 6th"));
+			mCards.add(CardUtils.createCard(this,"Thursday, March 6th"));
 		if(mCurrentDate.before(new Date(DateConstants.MAR_SEVENTH)))
-			mCards.add(createCard("Friday, March 7th"));
+			mCards.add(CardUtils.createCard(this,"Friday, March 7th"));
 		
-		mCards.add(createCard("Brought to you by Elliott Chenger and the folks at Mutual Mobile", "Twitter: @echenger", R.drawable.elliott_chenger));
-	}
-
-	private Card createCard(String text) {
-		Card card;
-		card = new Card(this);
-		card.setText(text);
-		return card;
-	}
-	private Card createCard(String text, String footerText){
-		Card card;
-		card = new Card(this);
-		card.setText(text);
-		card.setFootnote(footerText);
-		return card;
-	}
-	private Card createCard(String text, String footerText,int imageId){
-		Card card;
-		card = new Card(this);
-		card.setText(text);
-		card.setFootnote(footerText);
-		card.addImage(imageId);
-		return card;
+		mCards.add(CardUtils.createCard(this,"Brought to you by Elliott Chenger and the folks at Mutual Mobile", "Twitter: @echenger", R.drawable.elliott_chenger));
 	}
 
 }

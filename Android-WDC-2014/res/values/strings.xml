@@ -9,4 +9,5 @@
    	<string name="glass_voice_prompt">What date and time would you like?</string>
    	<string name="date">Date</string>
    	<string name="swipe_message">Swipe left or right</string>
+   	<string name="select_a_date">Select a date</string>
 </resources>

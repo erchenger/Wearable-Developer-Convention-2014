@@ -15,6 +15,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import com.elliott.chenger.wearabledeveloperconference2014.adapter.ImpCardScrollAdapter;
 import com.elliott.chenger.wearabledeveloperconference2014.model.EventTime;
 import com.elliott.chenger.wearabledeveloperconference2014.model.TimesByDate;
+import com.elliott.chenger.wearabledeveloperconference2014.utils.CardUtils;
 import com.elliott.chenger.wearabledeveloperconference2014.utils.DateConstants;
 import com.elliott.chenger.wearabledeveloperconference2014.utils.PreloadedJson;
 import com.google.android.glass.app.Card;
@@ -80,9 +81,9 @@ public class TimeActivity extends Activity{
 
 	private void createCardsBasedOnDate() {
 		mCards = new ArrayList<Card>();
-		mCards.add(createCard("Select a time for "+getSelectedDay(), "Swipe left or right"));
+		mCards.add(CardUtils.createCard(this,"Select a time for "+getSelectedDay(), "Swipe left or right"));
 		for(EventTime times:mEventTimes.eventTimes){
-			mCards.add(createCard(formatTimeToString(times.startTime,times.endTime)));
+			mCards.add(CardUtils.createCard(this,formatTimeToString(times.startTime,times.endTime)));
 		}
 	}
 
@@ -111,17 +112,5 @@ public class TimeActivity extends Activity{
 		return result;
 	}
 
-	private Card createCard(String text) {
-		Card card;
-		card = new Card(this);
-		card.setText(text);
-		return card;
-	}
-	private Card createCard(String text, String footerText){
-		Card card;
-		card = new Card(this);
-		card.setText(text);
-		card.setFootnote(footerText);
-		return card;
-	}
+
 }
