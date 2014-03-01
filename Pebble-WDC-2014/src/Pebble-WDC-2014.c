@@ -639,7 +639,7 @@ static void about_window_load(Window *window) {
     
     bottom_text_layer = text_layer_create( GRect ( 10, 115, 144, 50 ) );
     text_layer_set_font( bottom_text_layer, fonts_get_system_font( FONT_KEY_GOTHIC_14 ) );
-    text_layer_set_text( bottom_text_layer, "Codez by Sean McMains sean@mcmains.net");
+    text_layer_set_text( bottom_text_layer, "Codez by Sean McMains @SeanMcTex");
     layer_add_child( window_layer, text_layer_get_layer( bottom_text_layer ) );
     
 }
