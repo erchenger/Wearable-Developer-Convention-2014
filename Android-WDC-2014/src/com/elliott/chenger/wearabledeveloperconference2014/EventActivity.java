@@ -28,12 +28,12 @@ public class EventActivity extends Activity{
 	private Gson mGson;
 	private EventsByDate mEvents;
 	private Long mSelectedDate, mSelectedStartTime, mSelectedEndTime;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		mGson = new Gson();
-		
+
 		getIntent().getExtras().getLong(TimeActivity.START_TIME);
 		mSelectedDate = getIntent().getExtras().getLong(DateActivity.DATE);
 		mSelectedStartTime = getIntent().getExtras().getLong(TimeActivity.START_TIME);
@@ -54,11 +54,32 @@ public class EventActivity extends Activity{
 		mCards.add(CardUtils.createCard(this,getResources().getString(R.string.select_an_event), getResources().getString(R.string.swipe_message)));
 		for(Event event:mEvents.events){
 			if(event.startTime.equals(mSelectedStartTime) && event.endTime.equals(mSelectedEndTime)){
-				mCards.add(CardUtils.createCard(this,event.title+" ("+event.level+")","Speaker: "+event.speaker+"  Type: "+event.type));
+				if(event.level.isEmpty()&&event.speaker.isEmpty()&&event.type.isEmpty())
+					mCards.add(CardUtils.createCard(this,event.title));
+				else
+					mCards.add(CardUtils.createCard(this,titleBuilder(event),footerBuilder(event)));
 			}
 		}		
 	}
 
+	private String titleBuilder(Event event){
+		String result = "";
+		result += event.title;
+		if(!event.level.isEmpty()){
+			result += " ("+event.level+")";
+		}
+		return result;
+	}
+	
+	private String footerBuilder(Event event){
+		String result = "Speaker: ";
+		result += event.speaker;
+		if(!event.type.isEmpty()){
+			result += " Type: "+event.type;
+		}
+		return result;
+	}
+	
 	private void loadJson() {
 		if(mSelectedDate.equals(DateConstants.MAR_FIFTH)){
 			Log.v("JSON",PreloadedJson.FIFTH_EVENTS);
@@ -72,5 +93,5 @@ public class EventActivity extends Activity{
 		}		
 	}
 
-	
+
 }

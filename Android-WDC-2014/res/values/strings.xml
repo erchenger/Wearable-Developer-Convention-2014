@@ -2,7 +2,7 @@
 <resources>
 
     <!-- App Specific Text -->
-    <string name="app_name">Wearable Developer Conference 2014</string>
+    <string name="app_name">Wearable Developer Conference 2014 Glassware</string>
     <string name="action_settings">Settings</string>
 
     <!-- Glass Related Information -->
@@ -11,7 +11,7 @@
 
     <!-- Messages -->
     <string name="select_a_date">Select a Date</string>
-    <string name="select_a_time">Select a Time for</string>
+    <string name="select_a_time">Select a Time for </string>
     <string name="select_an_event">Select an Event</string>
     <string name="swipe_message">Swipe left or right</string>
 

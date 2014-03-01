@@ -9,6 +9,7 @@ import java.util.Locale;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -70,13 +71,13 @@ public class TimeActivity extends Activity{
 
 	private void loadJson() {
 		if(mSelectedDate.equals(DateConstants.MAR_FIFTH)){
-			mEventTimes = mGson.fromJson(PreloadedJson.FIFTH_TIMES, TimesByDate.class);
+			mEventTimes = mGson.fromJson(PreloadedJson.fifthTimeBuilder(), TimesByDate.class);
 		}
 		else if(mSelectedDate.equals(DateConstants.MAR_SIXTH)){
-			mEventTimes = mGson.fromJson(PreloadedJson.SIXTH_TIMES, TimesByDate.class);
+			mEventTimes = mGson.fromJson(PreloadedJson.sixthTimeBuilder(), TimesByDate.class);
 		}
 		else if(mSelectedDate.equals(DateConstants.MAR_SEVENTH)){
-			mEventTimes = mGson.fromJson(PreloadedJson.SEVENTH_TIMES, TimesByDate.class);
+			mEventTimes = mGson.fromJson(PreloadedJson.seventhTimeBuilders(), TimesByDate.class);
 		}
 	}
 
