@@ -5,7 +5,6 @@ import java.util.List;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.elliott.chenger.wearabledeveloperconference2014.adapter.ImpCardScrollAdapter;
 import com.elliott.chenger.wearabledeveloperconference2014.json.MarchFifthData;
@@ -15,7 +14,6 @@ import com.elliott.chenger.wearabledeveloperconference2014.model.Event;
 import com.elliott.chenger.wearabledeveloperconference2014.model.EventsByDate;
 import com.elliott.chenger.wearabledeveloperconference2014.utils.CardUtils;
 import com.elliott.chenger.wearabledeveloperconference2014.utils.DateConstants;
-import com.elliott.chenger.wearabledeveloperconference2014.utils.PreloadedJson;
 import com.google.android.glass.app.Card;
 import com.google.android.glass.widget.CardScrollView;
 import com.google.gson.Gson;
