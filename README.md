@@ -3,11 +3,26 @@ Wearable Developer Convention 2014
 
 This repo will be the home to both the Glassware and Pebble apps for the Wearable Developer Convention to help attendees view the schedule on their favorite wearable device. Forgive me (Elliott) for creating the Glassware with Eclipse and not Android Studios. We did this in a short amount of time and I am not fully switched over to AS yet. 
 
+# Updates
+Because the Glassware is not distributed through the Glassware Store please watch this repo or follow the twitter accounts located under the Developed By heading for any updates to the Glassware. 
+
 # Installation
 
 ## Glass
+1. Download the current latest version of the APK from the Glassware APK folder in this repo.
 
-Elliott will doubtless put interesting things in here.
+2. To install the Glassware onto your Google Glass you need to have first installed the [Android Developer Tools](http://developer.android.com/sdk/installing/bundle.html). Once you have installed the ADT you need to use Android Device Bridge (ADB) to install the glassware. 
+
+3. Simply open a terminal and type the following into the terminal (note if you haven't added ADB as a part of your class path you will need to navigate to where it was installed or add it to your class path)
+
+```
+adb install path/to/the/Glass-WDC-2014-vX.X.apk 
+```
+NOTE: Also make sure and change the "vX.X" with the version of the apk you downloaded. As well if you had previously loaded the glassware and are updating you will need to run the following command before installing the new glassware.
+
+```
+adb uninstall com.elliott.chenger.wearabledeveloperconference2014
+```
 
 ## Pebble
 
