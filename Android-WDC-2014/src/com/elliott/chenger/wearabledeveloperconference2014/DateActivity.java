@@ -42,17 +42,17 @@ public class DateActivity extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> adapter, View view, int position,
 					long arg3) {
-				if(position>0&&position<4){
+				if(position<3){
 					Intent intent = new Intent(DateActivity.this, TimeActivity.class);
 					Long selectedDate = 0L;
 					switch(position){
-					case 1:
+					case 0:
 						selectedDate= DateConstants.MAR_FIFTH;
 						break;
-					case 2:
+					case 1:
 						selectedDate= DateConstants.MAR_SIXTH;
 						break;
-					case 3:
+					case 2:
 						selectedDate= DateConstants.MAR_SEVENTH; 			
 						break;
 					default:
@@ -69,7 +69,6 @@ public class DateActivity extends Activity {
 	private void createCards(){
 		mCurrentDate = new Date(System.currentTimeMillis());
 		mCards = new ArrayList<Card>();
-		mCards.add(CardUtils.createCard(this,getResources().getString(R.string.select_a_date), getResources().getString(R.string.swipe_message)));
 		if(mCurrentDate.before(new Date(DateConstants.MAR_FIFTH)))
 			mCards.add(CardUtils.createCard(this,"Wednesday, March 5th"));
 		if(mCurrentDate.before(new Date(DateConstants.MAR_SIXTH)))

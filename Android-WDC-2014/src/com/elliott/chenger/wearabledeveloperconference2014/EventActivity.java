@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.elliott.chenger.wearabledeveloperconference2014.adapter.ImpCardScrollAdapter;
+import com.elliott.chenger.wearabledeveloperconference2014.json.MarchFifthData;
+import com.elliott.chenger.wearabledeveloperconference2014.json.MarchSeventhData;
+import com.elliott.chenger.wearabledeveloperconference2014.json.MarchSixthData;
 import com.elliott.chenger.wearabledeveloperconference2014.model.Event;
 import com.elliott.chenger.wearabledeveloperconference2014.model.EventsByDate;
 import com.elliott.chenger.wearabledeveloperconference2014.utils.CardUtils;
@@ -51,7 +54,6 @@ public class EventActivity extends Activity{
 
 	private void createCardsBasedOnEvents() {
 		mCards = new ArrayList<Card>();
-		mCards.add(CardUtils.createCard(this,getResources().getString(R.string.select_an_event), getResources().getString(R.string.swipe_message)));
 		for(Event event:mEvents.events){
 			if(event.startTime.equals(mSelectedStartTime) && event.endTime.equals(mSelectedEndTime)){
 				if(event.level.isEmpty()&&event.speaker.isEmpty()&&event.type.isEmpty())
@@ -82,14 +84,13 @@ public class EventActivity extends Activity{
 	
 	private void loadJson() {
 		if(mSelectedDate.equals(DateConstants.MAR_FIFTH)){
-			Log.v("JSON",PreloadedJson.FIFTH_EVENTS);
-			mEvents = mGson.fromJson(PreloadedJson.FIFTH_EVENTS, EventsByDate.class);
+			mEvents = mGson.fromJson(MarchFifthData.eventBuilder(), EventsByDate.class);
 		}
 		else if(mSelectedDate.equals(DateConstants.MAR_SIXTH)){
-			mEvents = mGson.fromJson(PreloadedJson.SIXTH_EVENTS, EventsByDate.class);
+			mEvents = mGson.fromJson(MarchSixthData.eventBuilder(), EventsByDate.class);
 		}
 		else if(mSelectedDate.equals(DateConstants.MAR_SEVENTH)){
-			mEvents = mGson.fromJson(PreloadedJson.SEVENTH_EVENTS, EventsByDate.class);
+			mEvents = mGson.fromJson(MarchSeventhData.eventBuilder(), EventsByDate.class);
 		}		
 	}
 

@@ -15,6 +15,9 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 
 import com.elliott.chenger.wearabledeveloperconference2014.adapter.ImpCardScrollAdapter;
+import com.elliott.chenger.wearabledeveloperconference2014.json.MarchFifthData;
+import com.elliott.chenger.wearabledeveloperconference2014.json.MarchSeventhData;
+import com.elliott.chenger.wearabledeveloperconference2014.json.MarchSixthData;
 import com.elliott.chenger.wearabledeveloperconference2014.model.EventTime;
 import com.elliott.chenger.wearabledeveloperconference2014.model.TimesByDate;
 import com.elliott.chenger.wearabledeveloperconference2014.utils.CardUtils;
@@ -55,15 +58,13 @@ public class TimeActivity extends Activity{
 			@Override
 			public void onItemClick(AdapterView<?> adapter, View view, int position,
 					long arg3) {
-				if(position>0){
-					Intent intent = new Intent(TimeActivity.this, EventActivity.class);
-					mSelectedStartTime = mEventTimes.eventTimes.get(position-1).startTime;
-					mSelectedEndTime = mEventTimes.eventTimes.get(position-1).endTime;
-					intent.putExtra(START_TIME, mSelectedStartTime);
-					intent.putExtra(END_TIME, mSelectedEndTime);
-					intent.putExtra(DateActivity.DATE, mSelectedDate);
-					startActivity(intent);
-				}
+				Intent intent = new Intent(TimeActivity.this, EventActivity.class);
+				mSelectedStartTime = mEventTimes.eventTimes.get(position).startTime;
+				mSelectedEndTime = mEventTimes.eventTimes.get(position).endTime;
+				intent.putExtra(START_TIME, mSelectedStartTime);
+				intent.putExtra(END_TIME, mSelectedEndTime);
+				intent.putExtra(DateActivity.DATE, mSelectedDate);
+				startActivity(intent);
 			}
 		});
 		setContentView(mCardScrollView);
@@ -71,19 +72,18 @@ public class TimeActivity extends Activity{
 
 	private void loadJson() {
 		if(mSelectedDate.equals(DateConstants.MAR_FIFTH)){
-			mEventTimes = mGson.fromJson(PreloadedJson.fifthTimeBuilder(), TimesByDate.class);
+			mEventTimes = mGson.fromJson(MarchFifthData.timeBuilder(), TimesByDate.class);
 		}
 		else if(mSelectedDate.equals(DateConstants.MAR_SIXTH)){
-			mEventTimes = mGson.fromJson(PreloadedJson.sixthTimeBuilder(), TimesByDate.class);
+			mEventTimes = mGson.fromJson(MarchSixthData.timeBuilder(), TimesByDate.class);
 		}
 		else if(mSelectedDate.equals(DateConstants.MAR_SEVENTH)){
-			mEventTimes = mGson.fromJson(PreloadedJson.seventhTimeBuilders(), TimesByDate.class);
+			mEventTimes = mGson.fromJson(MarchSeventhData.TimeBuilder(), TimesByDate.class);
 		}
 	}
 
 	private void createCardsBasedOnDate() {
 		mCards = new ArrayList<Card>();
-		mCards.add(CardUtils.createCard(this,getResources().getString(R.string.select_a_time)+getSelectedDay(), getResources().getString(R.string.swipe_message)));
 		for(EventTime times:mEventTimes.eventTimes){
 			mCards.add(CardUtils.createCard(this,formatTimeToString(times.startTime,times.endTime)));
 		}
