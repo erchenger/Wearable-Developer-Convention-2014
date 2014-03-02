@@ -159,6 +159,15 @@ public class MarchFifthData {
 		event.level = "overview";
 		result.events.add(event);
 		
+		event = new Event();
+		event.title = "Registration Open";
+		event.speaker = "";
+		event.startTime = 1394026200000L;
+		event.endTime = 1394065800000L;
+		event.type = "";
+		event.level = "";
+		result.events.add(event);
+		
 		Gson gson = new Gson();
 		return gson.toJson(result);
 	}
