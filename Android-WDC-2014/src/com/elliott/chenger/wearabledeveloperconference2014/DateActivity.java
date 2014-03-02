@@ -31,6 +31,7 @@ public class DateActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		getCurrentDate();
 		createCards();
 
 		mCardScrollView = new CardScrollView(this);
@@ -63,17 +64,31 @@ public class DateActivity extends Activity {
 				}
 			}
 		});
+		checkForCurrentDateAndUpdateScrollView();
 		setContentView(mCardScrollView);
 	}
 
-	private void createCards(){
+	private void getCurrentDate() {
 		mCurrentDate = new Date(System.currentTimeMillis());
+	}
+
+	private void checkForCurrentDateAndUpdateScrollView() {
+		if(mCurrentDate.before(new Date(DateConstants.MAR_SIXTH))){
+			mCardScrollView.setSelection(0);
+		}
+		else if(mCurrentDate.before(new Date(DateConstants.MAR_SEVENTH))){
+			mCardScrollView.setSelection(1);
+		}
+		else{
+			mCardScrollView.setSelection(2);
+		}
+		
+	}
+
+	private void createCards(){
 		mCards = new ArrayList<Card>();
-		if(mCurrentDate.before(new Date(DateConstants.MAR_FIFTH)))
 			mCards.add(CardUtils.createCard(this,"Wednesday, March 5th"));
-		if(mCurrentDate.before(new Date(DateConstants.MAR_SIXTH)))
 			mCards.add(CardUtils.createCard(this,"Thursday, March 6th"));
-		if(mCurrentDate.before(new Date(DateConstants.MAR_SEVENTH)))
 			mCards.add(CardUtils.createCard(this,"Friday, March 7th"));
 		
 		mCards.add(CardUtils.createCard(this,"The WDC Schedule Glassware was expertly crafted by Elliott Chenger from Mutual Mobile", "Twitter: @echenger", R.drawable.elliott_chenger));
