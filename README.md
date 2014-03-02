@@ -9,7 +9,7 @@ Because the Glassware is not distributed through the Glassware Store please watc
 # Installation
 
 ## Glass
-1. Download the [latest](https://github.com/erchenger/Wearable-Developer-Convention-2014/tree/master/Glassware%20APK/Glass-WDC-2014-v1.0.apk) version of the APK from the Glassware APK folder in this repo.
+1. Download the [latest (V1.1)](https://github.com/erchenger/Wearable-Developer-Convention-2014/tree/master/Glassware%20APK/Glass-WDC-2014-v1.1.apk) version of the APK from the Glassware APK folder in this repo.
 
 2. To install the Glassware onto your Google Glass you need to have first installed the [Android Developer Tools](http://developer.android.com/sdk/installing/bundle.html). Once you have installed the ADT you need to use Android Device Bridge (ADB) to install the glassware. 
 
