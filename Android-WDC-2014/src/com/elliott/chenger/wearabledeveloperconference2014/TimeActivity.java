@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.TimeZone;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -107,6 +108,7 @@ public class TimeActivity extends Activity{
 	private String formatTimeToString(Long startTime, Long endTime) {
 		String result = "";
 		SimpleDateFormat dateFormat = new SimpleDateFormat("h:mma", Locale.US);
+		dateFormat.setTimeZone(TimeZone.getTimeZone("GMT-6"));
 		result = dateFormat.format(new Date(startTime))+" to "+dateFormat.format(new Date(endTime));
 		return result;
 	}
